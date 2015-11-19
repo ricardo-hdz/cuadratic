@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import FontAwesome_swift
 
 class LoginViewController: UIViewController {
 
@@ -15,7 +16,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        icon.text = "\u{f080}"
+        icon.font = UIFont.fontAwesomeOfSize(100)
+        icon.text = String.fontAwesomeIconWithCode("fa-cube")
     }
 
 }
