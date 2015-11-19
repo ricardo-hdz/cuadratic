@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		E694A2A61BFD1F8800D18BED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2A51BFD1F8800D18BED /* AppDelegate.swift */; };
-		E694A2A81BFD1F8800D18BED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2A71BFD1F8800D18BED /* ViewController.swift */; };
 		E694A2AB1BFD1F8800D18BED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E694A2A91BFD1F8800D18BED /* Main.storyboard */; };
 		E694A2AD1BFD1F8800D18BED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E694A2AC1BFD1F8800D18BED /* Assets.xcassets */; };
 		E694A2B01BFD1F8800D18BED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E694A2AE1BFD1F8800D18BED /* LaunchScreen.storyboard */; };
 		E694A2BB1BFD1F8900D18BED /* cuadraticTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2BA1BFD1F8900D18BED /* cuadraticTests.swift */; };
 		E694A2C61BFD1F8900D18BED /* cuadraticUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2C51BFD1F8900D18BED /* cuadraticUITests.swift */; };
+		E694A2D71BFD4D4400D18BED /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2D61BFD4D4400D18BED /* CoreDataStackManager.swift */; };
+		E694A2D91BFD4DD400D18BED /* NetworkRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2D81BFD4DD400D18BED /* NetworkRequestHelper.swift */; };
+		E694A2DC1BFD4E1000D18BED /* NetworkRequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2DA1BFD4E1000D18BED /* NetworkRequestConstants.swift */; };
+		E694A2DD1BFD4E1000D18BED /* NetworkUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2DB1BFD4E1000D18BED /* NetworkUtilities.swift */; };
+		E694A2E41BFD511800D18BED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2E31BFD511800D18BED /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,6 @@
 /* Begin PBXFileReference section */
 		E694A2A21BFD1F8800D18BED /* cuadratic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cuadratic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E694A2A51BFD1F8800D18BED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E694A2A71BFD1F8800D18BED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E694A2AA1BFD1F8800D18BED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E694A2AC1BFD1F8800D18BED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E694A2AF1BFD1F8800D18BED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +50,12 @@
 		E694A2C11BFD1F8900D18BED /* cuadraticUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cuadraticUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E694A2C51BFD1F8900D18BED /* cuadraticUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cuadraticUITests.swift; sourceTree = "<group>"; };
 		E694A2C71BFD1F8900D18BED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E694A2D61BFD4D4400D18BED /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		E694A2D81BFD4DD400D18BED /* NetworkRequestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestHelper.swift; sourceTree = "<group>"; };
+		E694A2DA1BFD4E1000D18BED /* NetworkRequestConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequestConstants.swift; sourceTree = "<group>"; };
+		E694A2DB1BFD4E1000D18BED /* NetworkUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtilities.swift; sourceTree = "<group>"; };
+		E694A2DF1BFD504700D18BED /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
+		E694A2E31BFD511800D18BED /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +106,12 @@
 		E694A2A41BFD1F8800D18BED /* cuadratic */ = {
 			isa = PBXGroup;
 			children = (
+				E694A2DE1BFD502300D18BED /* Fonts */,
+				E694A2D61BFD4D4400D18BED /* CoreDataStackManager.swift */,
+				E694A2D51BFD4D2800D18BED /* Controller */,
+				E694A2D41BFD4D2300D18BED /* View */,
+				E694A2D31BFD4D1A00D18BED /* Model */,
 				E694A2A51BFD1F8800D18BED /* AppDelegate.swift */,
-				E694A2A71BFD1F8800D18BED /* ViewController.swift */,
 				E694A2A91BFD1F8800D18BED /* Main.storyboard */,
 				E694A2AC1BFD1F8800D18BED /* Assets.xcassets */,
 				E694A2AE1BFD1F8800D18BED /* LaunchScreen.storyboard */,
@@ -123,6 +136,39 @@
 				E694A2C71BFD1F8900D18BED /* Info.plist */,
 			);
 			path = cuadraticUITests;
+			sourceTree = "<group>";
+		};
+		E694A2D31BFD4D1A00D18BED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E694A2DA1BFD4E1000D18BED /* NetworkRequestConstants.swift */,
+				E694A2DB1BFD4E1000D18BED /* NetworkUtilities.swift */,
+				E694A2D81BFD4DD400D18BED /* NetworkRequestHelper.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E694A2D41BFD4D2300D18BED /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E694A2D51BFD4D2800D18BED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E694A2E31BFD511800D18BED /* LoginViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E694A2DE1BFD502300D18BED /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E694A2DF1BFD504700D18BED /* fontawesome-webfont.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +305,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E694A2A81BFD1F8800D18BED /* ViewController.swift in Sources */,
+				E694A2E41BFD511800D18BED /* LoginViewController.swift in Sources */,
+				E694A2DC1BFD4E1000D18BED /* NetworkRequestConstants.swift in Sources */,
 				E694A2A61BFD1F8800D18BED /* AppDelegate.swift in Sources */,
+				E694A2DD1BFD4E1000D18BED /* NetworkUtilities.swift in Sources */,
+				E694A2D71BFD4D4400D18BED /* CoreDataStackManager.swift in Sources */,
+				E694A2D91BFD4DD400D18BED /* NetworkRequestHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
