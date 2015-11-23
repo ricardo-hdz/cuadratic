@@ -10,6 +10,14 @@ import Foundation
 
 extension NetworkRequestHelper {
     
+    func replaceParamsInUrl(url: String, paramId: String, paramValue:String) -> String? {
+        if url.rangeOfString("{\(paramId)}") != nil {
+            return url.stringByReplacingOccurrencesOfString("{\(paramId)}", withString: paramValue)
+        } else {
+            return nil
+        }
+    }
+    
     func parseJSONBody(body: [String:AnyObject]?) -> NSData? {
         do {
             return try NSJSONSerialization.dataWithJSONObject(body!, options: [])

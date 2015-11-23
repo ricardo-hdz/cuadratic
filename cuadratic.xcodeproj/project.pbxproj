@@ -19,6 +19,18 @@
 		E694A2DC1BFD4E1000D18BED /* NetworkRequestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2DA1BFD4E1000D18BED /* NetworkRequestConstants.swift */; };
 		E694A2DD1BFD4E1000D18BED /* NetworkUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2DB1BFD4E1000D18BED /* NetworkUtilities.swift */; };
 		E694A2E41BFD511800D18BED /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2E31BFD511800D18BED /* LoginViewController.swift */; };
+		E6A1DCBB1C024F760034443B /* LoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCBA1C024F760034443B /* LoginHelper.swift */; };
+		E6A1DCBD1C0266D80034443B /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCBC1C0266D80034443B /* ResultCell.swift */; };
+		E6A1DCBF1C0271050034443B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCBE1C0271050034443B /* SearchViewController.swift */; };
+		E6A1DCC11C0275430034443B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCC01C0275430034443B /* Result.swift */; };
+		E6A1DCC31C027B2A0034443B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCC21C027B2A0034443B /* User.swift */; };
+		E6A1DCC61C027C720034443B /* cuadratic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCC41C027C720034443B /* cuadratic.xcdatamodeld */; };
+		E6A1DCC81C027D910034443B /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCC71C027D910034443B /* CoreDataHelper.swift */; };
+		E6A1DCCC1C02866C0034443B /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCCB1C02866C0034443B /* SearchHelper.swift */; };
+		E6A1DCCE1C0289080034443B /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCCD1C0289080034443B /* Venue.swift */; };
+		E6A1DCD01C0289C40034443B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCCF1C0289C40034443B /* Location.swift */; };
+		E6A1DCD21C028DB00034443B /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCD11C028DB00034443B /* Stats.swift */; };
+		E6A1DCD41C02A1150034443B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCD31C02A1150034443B /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +71,18 @@
 		E694A2DB1BFD4E1000D18BED /* NetworkUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtilities.swift; sourceTree = "<group>"; };
 		E694A2DF1BFD504700D18BED /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		E694A2E31BFD511800D18BED /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E6A1DCBA1C024F760034443B /* LoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHelper.swift; sourceTree = "<group>"; };
+		E6A1DCBC1C0266D80034443B /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
+		E6A1DCBE1C0271050034443B /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E6A1DCC01C0275430034443B /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		E6A1DCC21C027B2A0034443B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E6A1DCC51C027C720034443B /* cuadratic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cuadratic.xcdatamodel; sourceTree = "<group>"; };
+		E6A1DCC71C027D910034443B /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		E6A1DCCB1C02866C0034443B /* SearchHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
+		E6A1DCCD1C0289080034443B /* Venue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
+		E6A1DCCF1C0289C40034443B /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		E6A1DCD11C028DB00034443B /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		E6A1DCD31C02A1150034443B /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F405B23385F7C8DC27088D89 /* Pods-cuadratic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuadratic.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuadratic/Pods-cuadratic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +192,14 @@
 				E694A2DA1BFD4E1000D18BED /* NetworkRequestConstants.swift */,
 				E694A2DB1BFD4E1000D18BED /* NetworkUtilities.swift */,
 				E694A2D81BFD4DD400D18BED /* NetworkRequestHelper.swift */,
+				E6A1DCBA1C024F760034443B /* LoginHelper.swift */,
+				E6A1DCC01C0275430034443B /* Result.swift */,
+				E6A1DCC21C027B2A0034443B /* User.swift */,
+				E6A1DCC41C027C720034443B /* cuadratic.xcdatamodeld */,
+				E6A1DCCD1C0289080034443B /* Venue.swift */,
+				E6A1DCCF1C0289C40034443B /* Location.swift */,
+				E6A1DCD11C028DB00034443B /* Stats.swift */,
+				E6A1DCD31C02A1150034443B /* Category.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -175,6 +207,7 @@
 		E694A2D41BFD4D2300D18BED /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E6A1DCBC1C0266D80034443B /* ResultCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -183,6 +216,9 @@
 			isa = PBXGroup;
 			children = (
 				E694A2E31BFD511800D18BED /* LoginViewController.swift */,
+				E6A1DCBE1C0271050034443B /* SearchViewController.swift */,
+				E6A1DCC71C027D910034443B /* CoreDataHelper.swift */,
+				E6A1DCCB1C02866C0034443B /* SearchHelper.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -380,12 +416,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A1DCCC1C02866C0034443B /* SearchHelper.swift in Sources */,
+				E6A1DCD21C028DB00034443B /* Stats.swift in Sources */,
+				E6A1DCCE1C0289080034443B /* Venue.swift in Sources */,
+				E6A1DCD01C0289C40034443B /* Location.swift in Sources */,
 				E694A2E41BFD511800D18BED /* LoginViewController.swift in Sources */,
+				E6A1DCD41C02A1150034443B /* Category.swift in Sources */,
 				E694A2DC1BFD4E1000D18BED /* NetworkRequestConstants.swift in Sources */,
+				E6A1DCBD1C0266D80034443B /* ResultCell.swift in Sources */,
+				E6A1DCBF1C0271050034443B /* SearchViewController.swift in Sources */,
 				E694A2A61BFD1F8800D18BED /* AppDelegate.swift in Sources */,
 				E694A2DD1BFD4E1000D18BED /* NetworkUtilities.swift in Sources */,
+				E6A1DCC11C0275430034443B /* Result.swift in Sources */,
+				E6A1DCBB1C024F760034443B /* LoginHelper.swift in Sources */,
+				E6A1DCC81C027D910034443B /* CoreDataHelper.swift in Sources */,
 				E694A2D71BFD4D4400D18BED /* CoreDataStackManager.swift in Sources */,
 				E694A2D91BFD4DD400D18BED /* NetworkRequestHelper.swift in Sources */,
+				E6A1DCC61C027C720034443B /* cuadratic.xcdatamodeld in Sources */,
+				E6A1DCC31C027B2A0034443B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +681,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E6A1DCC41C027C720034443B /* cuadratic.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E6A1DCC51C027C720034443B /* cuadratic.xcdatamodel */,
+			);
+			currentVersion = E6A1DCC51C027C720034443B /* cuadratic.xcdatamodel */;
+			path = cuadratic.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E694A29A1BFD1F8800D18BED /* Project object */;
 }

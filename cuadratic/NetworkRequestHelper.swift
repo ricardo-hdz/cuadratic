@@ -10,6 +10,7 @@ import Foundation
 
 class NetworkRequestHelper: NSObject {
     var session: NSURLSession!
+    var token: String!
     
     override init() {
         super.init()
@@ -23,7 +24,14 @@ class NetworkRequestHelper: NSObject {
         return Singleton.instance
     }
     
-    func serviceRequest(serviceEndpoint: String, requestMethod: String, headers: NSMutableDictionary, jsonBody: [String:AnyObject]?, postProcessor: ((data: AnyObject) -> NSData)?, callback: (result: AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func serviceRequest(var serviceEndpoint: String, requestMethod: String, headers: NSMutableDictionary, params: [String: AnyObject]?, jsonBody: [String:AnyObject]?, postProcessor: ((data: AnyObject) -> NSData)?, callback: (result: AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        if (params != nil) {
+            serviceEndpoint = serviceEndpoint + self.escapeParams(params!)
+        }
+        
+        print("Endpoint: \(serviceEndpoint)")
+
         let url = NSURL(string: serviceEndpoint)
         
         let request = NSMutableURLRequest(URL: url!)
@@ -35,6 +43,7 @@ class NetworkRequestHelper: NSObject {
         for (headerField, headerValue) in headers {
             request.addValue(headerValue as! String, forHTTPHeaderField: headerField as! String)
         }
+        
         
         if (jsonBody != nil) {
             request.HTTPBody = self.parseJSONBody(jsonBody)
@@ -50,6 +59,15 @@ class NetworkRequestHelper: NSObject {
         
         task.resume()
         return task
+    }
+    
+    func serviceRequestWithToken(serviceEndpoint: String, requestMethod: String, headers: NSMutableDictionary, var params: [String: AnyObject], jsonBody: [String:AnyObject]?, postProcessor: ((data: AnyObject) -> NSData)?, callback: (result: AnyObject?, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        params["oauth_token"] = token
+        params["v"] = "20151120"
+        params["m"] = "foursquare"
+        
+        return serviceRequest(serviceEndpoint, requestMethod: requestMethod, headers: headers, params: params, jsonBody: jsonBody, postProcessor: postProcessor, callback: callback)
     }
     
     func dataRequest(url: String, callback: (data: NSData?, error: NSError?) -> Void) -> NSURLSessionDataTask {
