@@ -6,13 +6,15 @@
 //  Copyright © 2015 Ricardo Hdz. All rights reserved.
 //
 
-import Foundation
+import UIKit
 class Venue {
     var id: String
     var name: String
     var location: Location
     var category: Category
     var stats: Stats
+    var photos: [Photo]?
+    var thumbnail: UIImage?
 
     init(dictionary: [String: AnyObject]) {
         id = (dictionary["id"] as? String)!

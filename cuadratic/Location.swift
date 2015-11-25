@@ -32,7 +32,7 @@ class Location {
         get {
             var locationString: String = ""
             for address in formattedAddress {
-                locationString += address
+                locationString += " \(address)"
             }
             return locationString
         }

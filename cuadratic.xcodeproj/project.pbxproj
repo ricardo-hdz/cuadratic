@@ -31,6 +31,8 @@
 		E6A1DCD01C0289C40034443B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCCF1C0289C40034443B /* Location.swift */; };
 		E6A1DCD21C028DB00034443B /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCD11C028DB00034443B /* Stats.swift */; };
 		E6A1DCD41C02A1150034443B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCD31C02A1150034443B /* Category.swift */; };
+		E6A1DCD61C06297A0034443B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCD51C06297A0034443B /* Photo.swift */; };
+		E6A1DCD81C0630AA0034443B /* PhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCD71C0630AA0034443B /* PhotoHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		E6A1DCCF1C0289C40034443B /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		E6A1DCD11C028DB00034443B /* Stats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
 		E6A1DCD31C02A1150034443B /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		E6A1DCD51C06297A0034443B /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		E6A1DCD71C0630AA0034443B /* PhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHelper.swift; sourceTree = "<group>"; };
 		F405B23385F7C8DC27088D89 /* Pods-cuadratic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuadratic.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuadratic/Pods-cuadratic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +204,7 @@
 				E6A1DCCF1C0289C40034443B /* Location.swift */,
 				E6A1DCD11C028DB00034443B /* Stats.swift */,
 				E6A1DCD31C02A1150034443B /* Category.swift */,
+				E6A1DCD51C06297A0034443B /* Photo.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 				E6A1DCBE1C0271050034443B /* SearchViewController.swift */,
 				E6A1DCC71C027D910034443B /* CoreDataHelper.swift */,
 				E6A1DCCB1C02866C0034443B /* SearchHelper.swift */,
+				E6A1DCD71C0630AA0034443B /* PhotoHelper.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 			files = (
 				E6A1DCCC1C02866C0034443B /* SearchHelper.swift in Sources */,
 				E6A1DCD21C028DB00034443B /* Stats.swift in Sources */,
+				E6A1DCD81C0630AA0034443B /* PhotoHelper.swift in Sources */,
 				E6A1DCCE1C0289080034443B /* Venue.swift in Sources */,
 				E6A1DCD01C0289C40034443B /* Location.swift in Sources */,
 				E694A2E41BFD511800D18BED /* LoginViewController.swift in Sources */,
@@ -428,6 +435,7 @@
 				E694A2A61BFD1F8800D18BED /* AppDelegate.swift in Sources */,
 				E694A2DD1BFD4E1000D18BED /* NetworkUtilities.swift in Sources */,
 				E6A1DCC11C0275430034443B /* Result.swift in Sources */,
+				E6A1DCD61C06297A0034443B /* Photo.swift in Sources */,
 				E6A1DCBB1C024F760034443B /* LoginHelper.swift in Sources */,
 				E6A1DCC81C027D910034443B /* CoreDataHelper.swift in Sources */,
 				E694A2D71BFD4D4400D18BED /* CoreDataStackManager.swift in Sources */,

@@ -32,11 +32,19 @@ extension NetworkRequestHelper {
             static let FSQ_ENDPOINT = "https://api.foursquare.com/v2/"
 
             struct VENUES {
-                static let METHOD = "venues/search"
+                static let SEARCH_VENUE = "venues/search"
+                static let SEARCH_VENUE_PHOTOS = "venues/{VENUE_ID}/photos"
+                
                 struct PARAMS {
                     static let LOCATION = "ll"
                     static let NEAR = "near"
+                    static let VENUE_ID = "VENUE_ID"
+                    static let LIMIT = "limit"
                 }
+            }
+            
+            struct PHOTO {
+
             }
             
         }

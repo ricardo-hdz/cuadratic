@@ -51,5 +51,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Your message goes here Always Usage Decrioptor</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Your message goes here: NSLocationWhenInUseUsageDescription </string>
 </dict>
 </plist>
