@@ -16,21 +16,12 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var venueThumbnail: UIImageView!
     
     @IBOutlet weak var venueTitle: UILabel!
-    
-    @IBOutlet weak var venueCategory: UILabel!
-    
-    @IBOutlet weak var venueLocation: UILabel!
+  
     @IBOutlet weak var totalCheckins: UILabel!
     @IBOutlet weak var twitterCheckins: UILabel!
     @IBOutlet weak var facebookCheckins: UILabel!
     @IBOutlet weak var femaleCheckins: UILabel!
     @IBOutlet weak var maleCheckins: UILabel!
-    @IBOutlet weak var age1317: UILabel!
-    @IBOutlet weak var age1824: UILabel!
-    @IBOutlet weak var age2534: UILabel!
-    @IBOutlet weak var age3544: UILabel!
-    @IBOutlet weak var age4554: UILabel!
-    @IBOutlet weak var age55: UILabel!
     
     // icons
     @IBOutlet weak var totalCheckinsIcon: UILabel!
@@ -77,15 +68,15 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         venueThumbnail.clipsToBounds = true
         
         venueTitle.text = venue.name
-        venueCategory.text = venue.category.name
-        venueLocation.text = venue.location.fullLocationString
+        //venueCategory.text = venue.category.name
+        //venueLocation.text = venue.location.fullLocationString
     }
     
-    func getAgeLabels() -> [UILabel] {
+    /*func getAgeLabels() -> [UILabel] {
         return [
             age1317, age1824, age2534, age3544, age4554, age55
         ]
-    }
+    }*/
     
     func getVenueStats() {
         StatsHelper.getVenueStats(venue.id) {stats, error in

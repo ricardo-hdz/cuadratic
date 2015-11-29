@@ -34,7 +34,6 @@ class Photo: NSObject {
     var image: UIImage? {
         get {
             if !documentPath.isEmpty {
-                print("Returning photo from cache")
                 return CacheHelper.getInstance().getImage(self.id)
             }
             return nil
