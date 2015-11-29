@@ -44,6 +44,7 @@
 		E6A1DCEC1C0AAD620034443B /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCEB1C0AAD620034443B /* Color.swift */; };
 		E6A1DD111C0B745B0034443B /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6A1DD0C1C0B74240034443B /* Charts.framework */; };
 		E6A1DD121C0B745B0034443B /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A1DD0C1C0B74240034443B /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6A1DD191C0B84E70034443B /* AgeBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DD181C0B84E70034443B /* AgeBreakdownViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		E6A1DCE81C0A6F0B0034443B /* StatsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsHelper.swift; sourceTree = "<group>"; };
 		E6A1DCEB1C0AAD620034443B /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		E6A1DD051C0B74230034443B /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "ios-charts/Charts/Charts.xcodeproj"; sourceTree = "<group>"; };
+		E6A1DD181C0B84E70034443B /* AgeBreakdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeBreakdownViewController.swift; sourceTree = "<group>"; };
 		F405B23385F7C8DC27088D89 /* Pods-cuadratic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuadratic.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuadratic/Pods-cuadratic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,6 +296,7 @@
 				E6A1DCDC1C0768AF0034443B /* VenueListViewController.swift */,
 				E6A1DCE01C07A8890034443B /* FavoritesViewController.swift */,
 				E6A1DCE61C0A54C00034443B /* VenueDetailViewController.swift */,
+				E6A1DD181C0B84E70034443B /* AgeBreakdownViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				E6A1DCBF1C0271050034443B /* SearchViewController.swift in Sources */,
 				E694A2A61BFD1F8800D18BED /* AppDelegate.swift in Sources */,
 				E6A1DCEC1C0AAD620034443B /* Color.swift in Sources */,
+				E6A1DD191C0B84E70034443B /* AgeBreakdownViewController.swift in Sources */,
 				E694A2DD1BFD4E1000D18BED /* NetworkUtilities.swift in Sources */,
 				E6A1DCC11C0275430034443B /* Result.swift in Sources */,
 				E6A1DCD61C06297A0034443B /* Photo.swift in Sources */,

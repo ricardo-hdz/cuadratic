@@ -12,6 +12,7 @@ import FontAwesome_swift
 
 class VenueDetailViewController: UIViewController, UINavigationControllerDelegate {
     var venue: Venue!
+    var stats: Stats!
     
     @IBOutlet weak var venueThumbnail: UIImageView!
     
@@ -30,6 +31,8 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var femaleIcon: UILabel!
     @IBOutlet weak var maleIcon: UILabel!
     
+    @IBOutlet weak var viewAgeBreakdown: UIButton!
+    @IBOutlet weak var viewHourBreakdown: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +57,14 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         
     }
     
+    @IBAction func viewAgeBreakdown(sender: AnyObject) {
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("ageBreakdownViewController") as! AgeBreakdownViewController
+        controller.stats = self.stats
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 
+    @IBAction func viewHourBreakdown(sender: AnyObject) {
+    }
     
     func setNavigationBar() {
         let navBar = self.navigationController?.navigationBar
@@ -84,7 +94,8 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
                 print("Error while requesting stats: \(error)")
             } else {
                 if let stats = stats {
-                    dispatch_async(dispatch_get_main_queue(), {
+                        self.stats = stats
+                        dispatch_async(dispatch_get_main_queue(), {
                         self.displayVenueStats(stats)
                     })
                     
