@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Location {
+class Location: NSObject {
     var address: String
     var lat: Double
     var lon: Double

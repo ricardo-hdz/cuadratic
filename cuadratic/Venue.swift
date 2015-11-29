@@ -7,21 +7,74 @@
 //
 
 import UIKit
-class Venue {
+class Venue: NSObject {
     var id: String
     var name: String
     var location: Location
     var category: Category
-    var stats: Stats
+    //var stats: Stats
     var photos: [Photo]?
-    var thumbnail: UIImage?
+    var isFavorite: Bool
 
     init(dictionary: [String: AnyObject]) {
         id = (dictionary["id"] as? String)!
         name = (dictionary["name"] as? String)!
         category = Category(dictionary: dictionary["categories"] as! [[String:AnyObject]])
         location = (dictionary["location"] as? Location)!
-        stats = (dictionary["stats"] as? Stats)!
+        //stats = (dictionary["stats"] as? Stats)!
+        isFavorite = false
+    }
+    
+    var hasPhotos: Bool {
+        get {
+            return photos?.count > 0
+        }
+    }
+    
+    var thumbnailImage: UIImage? {
+        get {
+            if (hasPhotos) {
+                return photos![0].image
+            }
+            return nil
+        }
+        set {
+            if (hasPhotos) {
+                photos![0].image = newValue!
+            }
+        }
+    }
+    
+    var thumbnailPath: String? {
+        get {
+            if (hasPhotos) {
+                return photos![0].documentPath
+            }
+            return nil
+        }
+        set {
+            if (hasPhotos) {
+                photos![0].documentPath = newValue!
+            }
+        }
+    }
+    
+    var thumbnailUrl: String? {
+        get {
+            if (hasPhotos) {
+                return photos![0].getUrl(Photo.size.small)
+            }
+            return nil
+        }
+    }
+    
+    var thumbnailPhoto: Photo? {
+        get {
+            if (hasPhotos) {
+                return photos![0]
+            }
+            return nil
+        }
     }
     
 }

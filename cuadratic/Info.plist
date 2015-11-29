@@ -51,9 +51,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Your message goes here Always Usage Decrioptor</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your message goes here: NSLocationWhenInUseUsageDescription </string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Cuadratic will provide better results to you based in your location.</string>
 </dict>
 </plist>

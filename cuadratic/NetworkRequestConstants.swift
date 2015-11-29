@@ -30,10 +30,13 @@ extension NetworkRequestHelper {
         
         struct API {
             static let FSQ_ENDPOINT = "https://api.foursquare.com/v2/"
+            static let FQS_SIMULATE = "simulate/"
+            static let FQS_SIMULATE_VENUE_ID = "4e0deab3922e6f94b1410af3"
 
             struct VENUES {
                 static let SEARCH_VENUE = "venues/search"
                 static let SEARCH_VENUE_PHOTOS = "venues/{VENUE_ID}/photos"
+                static let SEARCH_VENUE_STATS = "venues/{VENUE_ID}/stats"
                 
                 struct PARAMS {
                     static let LOCATION = "ll"
@@ -41,10 +44,6 @@ extension NetworkRequestHelper {
                     static let VENUE_ID = "VENUE_ID"
                     static let LIMIT = "limit"
                 }
-            }
-            
-            struct PHOTO {
-
             }
             
         }

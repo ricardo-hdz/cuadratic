@@ -26,9 +26,9 @@ class SearchHelper {
                             let location = Location(dictionary: locationData)
                             venueData["location"] = location
                             
-                            let statsData = venueData["stats"] as! [String:AnyObject]
+                            /*let statsData = venueData["stats"] as! [String:AnyObject]
                             let stats = Stats(dictionary: statsData)
-                            venueData["stats"] = stats
+                            venueData["stats"] = stats*/
                             
                             let venue = Venue(dictionary: venueData)
                             venueResults.append(venue)

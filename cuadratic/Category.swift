@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class Category {
+class Category:NSObject {
     var name: String = "NA"
     var icon: String = "NA"
     

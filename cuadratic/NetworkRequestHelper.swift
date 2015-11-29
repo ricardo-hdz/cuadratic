@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class NetworkRequestHelper: NSObject {
     var session: NSURLSession!
@@ -51,6 +52,9 @@ class NetworkRequestHelper: NSObject {
         
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if let error = error {
+                print("Data: \(data)")
+                print("Response: \(response)")
+                                print("Error: \(error)")
                 callback(result: nil, error: error)
             } else {
                 self.parseReponseData(data!, postProcessor: postProcessor, callback: callback)
@@ -81,5 +85,18 @@ class NetworkRequestHelper: NSObject {
         }
         task.resume()
         return task
+    }
+    
+    func shouldSimulate() -> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        return appDelegate.simulate
+    }
+    
+    func getFoursquareEndpoint() -> String {
+        return shouldSimulate() ? Constants.API.FSQ_ENDPOINT + Constants.API.FQS_SIMULATE : Constants.API.FSQ_ENDPOINT
+    }
+    
+    func replaceVenueInEndpoint(endpoint: String, venueId: String) -> String {
+        return (shouldSimulate() ? replaceParamsInUrl(endpoint, paramId: "VENUE_ID", paramValue: Constants.API.FQS_SIMULATE_VENUE_ID) : replaceParamsInUrl(endpoint, paramId: "VENUE_ID", paramValue: venueId))!
     }
 }

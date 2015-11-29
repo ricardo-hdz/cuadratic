@@ -7,15 +7,23 @@
 //
 
 import Foundation
-class Stats {
-    var checkinsCount: Int
-    var usersCount: Int
-    var tipCount: Int
+class Stats:NSObject {
+    var totalCheckins: Int
+    var twitterCheckins: Int
+    var facebookCheckins: Int
+    var maleCheckins: Int
+    var femaleCheckins: Int
+    var ageBreakdown: [NSDictionary]
+    var hourBreakdown: [NSDictionary]
     
     init(dictionary: [String: AnyObject]) {
-        checkinsCount = (dictionary["checkinsCount"] as? Int)!
-        usersCount = (dictionary["usersCount"] as? Int)!
-        tipCount = (dictionary["tipCount"] as? Int)!
+        totalCheckins = dictionary["totalCheckins"] as! Int
+        twitterCheckins = dictionary["twitterCheckins"] as! Int
+        facebookCheckins = dictionary["facebookCheckins"] as! Int
+        maleCheckins = dictionary["maleCheckins"] as! Int
+        femaleCheckins = dictionary["femaleCheckins"] as! Int
+        ageBreakdown = dictionary["ageBreakdown"] as! [NSDictionary]
+        hourBreakdown = dictionary["hourBreakdown"] as! [NSDictionary]
     }
 
 }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreLocation
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, CLLocationManagerDelegate {
+class SearchViewController: VenueListViewController, UISearchBarDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var locationBar: UISearchBar!
@@ -19,8 +19,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchIndicator: UIActivityIndicatorView!
     
     let locationManager = CLLocationManager()
-    var venues = [Venue]()
-    var location: CLLocationCoordinate2D!
+    var location: CLLocationCoordinate2D?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,84 +30,38 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         resultsTable.delegate = self
         resultsTable.dataSource = self
         
-        // Request location auth
-        locationManager.requestAlwaysAuthorization()
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "handleDismissTap:")
+        tapRecognizer.numberOfTapsRequired = 1
+        tapRecognizer.delegate = self
+        self.view.addGestureRecognizer(tapRecognizer)
+        
+        searchVenues()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+
+        locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        
-        if (CLLocationManager.locationServicesEnabled()) {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            //locationManager.startUpdatingLocation()
-            locationManager.requestLocation()
-            print("Locating")
-        } else {
-            print("Location disabled")
-        }
-        
+        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
+        locationManager.requestLocation()
+
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let venue = venues[indexPath.row]
-        
-        let cell = resultsTable.dequeueReusableCellWithIdentifier("resultCell") as! ResultCell
-        cell.title.text = venue.name
-        cell.location.text = venue.location.fullLocationString
-        cell.entityType.text = venue.category.name
-        if let thumbnail = venue.thumbnail {
-            cell.thumbnail.image = thumbnail
-            cell.imageLoadingIndicator.stopAnimating()
-        } else {
-            cell.imageLoadingIndicator.startAnimating()
-            getThumbnailForVenue(indexPath)
-        }
-        
-        return cell
+    // Tap Recognizer
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        return searchBar.isFirstResponder() || locationBar.isFirstResponder()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return venues.count
+    func handleDismissTap(recognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
-    func getThumbnailForVenue(index: NSIndexPath) {
-        let venue = venues[index.row]
-        
-        if (!venue.id.isEmpty) {
-            let params: [String: String] = [
-                "limit": "1"
-            ]
-            SearchHelper.getVenuePhotos(venue.id, params: params) { photos, error in
-                if let error = error {
-                    // ignore and display placelholder
-                    print("Error getVenuePhotos: \(error)")
-                } else {
-                    // request photo
-                    self.venues[index.row].photos = photos
-                    self.loadThumbnailForVenue(index)
-                }
-                // save in context
-            }
-        }
-        
+    override func getVenuesTable() -> UITableView {
+        return self.resultsTable
     }
     
-    func loadThumbnailForVenue(index: NSIndexPath) {
-        let venue = self.venues[index.row]
-        if (venue.photos?.count > 0) {
-            let url = venue.photos![0].getUrl(Photo.size.small)
-            if !url.isEmpty {
-                PhotoHelper.getImage(url) { image, error in
-                    if let error = error {
-                        print("Unable to get image for URL: \(url). Error: \(error)")
-                    } else {
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.venues[index.row].thumbnail = image!
-                            self.resultsTable.reloadRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Automatic)
-                        })
-                    }
-                }
-            }
-        }
-    }
+    // Tap Cell
+    
     
     func getLocationForQuery() -> [String:AnyObject] {
         let customLocation = locationBar.text!
@@ -117,8 +70,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 "near": customLocation
             ]
         } else {
-             return [
-                "ll": "\(location.latitude),\(location.longitude)"
+            if (location == nil) {
+                print("Requesting locations as == nil")
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.locationManager.requestLocation()
+                })
+            }
+            return [
+                "ll": "\(location!.latitude),\(location!.longitude)"
             ]
         }
     }
@@ -133,6 +92,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("Updated location")
         self.location = manager.location?.coordinate
     }
     
@@ -140,40 +100,60 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         print("Error while updating location: \(error.localizedDescription)")
     }
     
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        print("Statis changed")
+        print("Status: \(status)")
+        if (status == CLAuthorizationStatus.AuthorizedWhenInUse) {
+            // request location
+            if (CLLocationManager.locationServicesEnabled()) {
+                
+                //locationManager.startUpdatingLocation()
+                locationManager.requestLocation()
+                print("Locating")
+            } else {
+                print("Location disabled")
+            }
+        }
+    }
+    
     
     // Search Bar - Delegate
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        if (!searchBar.text!.isEmpty) {
-            venues = [Venue]()
-            searchIndicator.startAnimating()
-            var params = getLocationForQuery()
-            let query = self.searchBar.text!
-            params["query"] = query
-            
-            searchBar.endEditing(true)
-            
-            SearchHelper.searchVenues(params) { venues, error in
-                if let error = error {
-                    // display error in UI
-                    print(error)
-                    self.searchIndicator.stopAnimating()
+    func searchVenues() {
+        venues = [Venue]()
+        searchIndicator.startAnimating()
+        var params = getLocationForQuery()
+        let query = self.searchBar.text!
+        params["query"] = query
+        
+        searchBar.endEditing(true)
+        
+        SearchHelper.searchVenues(params) { venues, error in
+            if let error = error {
+                // display error in UI
+                print(error)
+                self.searchIndicator.stopAnimating()
+            } else {
+                print("Venues count \(venues?.count)")
+                if (venues?.count > 0) {
+                    self.venues = venues!
+                    self.refreshVenues()
                 } else {
-                    print("Venues count \(venues?.count)")
-                    if (venues?.count > 0) {
-                        self.venues = venues!
-                        self.refreshVenues()
-                    } else {
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.searchIndicator.stopAnimating()
-                            self.resultsTable.hidden = true
-                            self.searchPlacesLabel.text = "No results found for \(query)"
-                            self.searchPlacesLabel.hidden = false
-                        })
-                        
-                    }
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.searchIndicator.stopAnimating()
+                        self.resultsTable.hidden = true
+                        self.searchPlacesLabel.text = "No results found for \(query)"
+                        self.searchPlacesLabel.hidden = false
+                    })
+                    
                 }
             }
+        }
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        if (!searchBar.text!.isEmpty) {
+            searchVenues()
         }
     }
     
