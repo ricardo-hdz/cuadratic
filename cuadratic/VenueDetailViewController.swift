@@ -13,8 +13,6 @@ import FontAwesome_swift
 class VenueDetailViewController: UIViewController, UINavigationControllerDelegate {
     var venue: Venue!
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var venueThumbnail: UIImageView!
     
     @IBOutlet weak var venueTitle: UILabel!
@@ -65,11 +63,7 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         
     }
     
-    override func viewWillLayoutSubviews()
-    {
-        super.viewWillLayoutSubviews();
-        scrollView.contentSize.height = 3000; // Or whatever you want it to be.
-    }
+
     
     func setNavigationBar() {
         let navBar = self.navigationController?.navigationBar
