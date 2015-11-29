@@ -8,8 +8,12 @@
 
 import Foundation
 import UIKit
+import FontAwesome_swift
+
 class VenueDetailViewController: UIViewController, UINavigationControllerDelegate {
     var venue: Venue!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var venueThumbnail: UIImageView!
     
@@ -30,11 +34,41 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var age4554: UILabel!
     @IBOutlet weak var age55: UILabel!
     
+    // icons
+    @IBOutlet weak var totalCheckinsIcon: UILabel!
+    @IBOutlet weak var facebookIcon: UILabel!
+    @IBOutlet weak var twitterIcon: UILabel!
+    @IBOutlet weak var femaleIcon: UILabel!
+    @IBOutlet weak var maleIcon: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
         getVenueStats()
         setVenueHeader()
+        
+        totalCheckinsIcon.font = UIFont.fontAwesomeOfSize(14.0)
+        totalCheckinsIcon.text = String.fontAwesomeIconWithCode("fa-check-circle-o")
+        
+        facebookIcon.font = UIFont.fontAwesomeOfSize(14.0)
+        facebookIcon.text = String.fontAwesomeIconWithCode("fa-facebook")
+        
+        twitterIcon.font = UIFont.fontAwesomeOfSize(14.0)
+        twitterIcon.text = String.fontAwesomeIconWithCode("fa-twitter")
+        
+        femaleIcon.font = UIFont.fontAwesomeOfSize(14.0)
+        femaleIcon.text = String.fontAwesomeIconWithCode("fa-female")
+        
+        maleIcon.font = UIFont.fontAwesomeOfSize(14.0)
+        maleIcon.text = String.fontAwesomeIconWithCode("fa-male")
+        
+    }
+    
+    override func viewWillLayoutSubviews()
+    {
+        super.viewWillLayoutSubviews();
+        scrollView.contentSize.height = 3000; // Or whatever you want it to be.
     }
     
     func setNavigationBar() {
@@ -81,13 +115,13 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         femaleCheckins.text = "\(stats.femaleCheckins)"
         maleCheckins.text = "\(stats.maleCheckins)"
         
-        let ageLabels = getAgeLabels()
+        /*let ageLabels = getAgeLabels()
         for (var index = 0; index < ageLabels.count; index++) {
             
             let age = stats.ageBreakdown[index]
             print("Age: \(age)")
             ageLabels[index].text = "\(age.valueForKey("checkins")!)"
-        }
+        }*/
         
     }
 
