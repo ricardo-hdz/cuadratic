@@ -30,7 +30,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewWillAppear(true)
         FavoritesHelper.getInstance().loadData()
         favorites = FavoritesHelper.getInstance().getFavorites()
-        print("viewWillAppear")
+
         favoritesTable.reloadData()
     }
     
@@ -48,6 +48,13 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Returning count")
         return favorites.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let venue = favorites[indexPath.row]
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("venueDetailController") as! VenueDetailViewController
+        //controller.venue = venue
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
 }

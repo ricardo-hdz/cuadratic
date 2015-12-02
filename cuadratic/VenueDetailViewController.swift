@@ -64,6 +64,9 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     }
 
     @IBAction func viewHourBreakdown(sender: AnyObject) {
+        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("hourBreakdownViewController") as! HourBreakdownViewController
+        controller.stats = self.stats
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func setNavigationBar() {
@@ -78,15 +81,7 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         venueThumbnail.clipsToBounds = true
         
         venueTitle.text = venue.name
-        //venueCategory.text = venue.category.name
-        //venueLocation.text = venue.location.fullLocationString
     }
-    
-    /*func getAgeLabels() -> [UILabel] {
-        return [
-            age1317, age1824, age2534, age3544, age4554, age55
-        ]
-    }*/
     
     func getVenueStats() {
         StatsHelper.getVenueStats(venue.id) {stats, error in

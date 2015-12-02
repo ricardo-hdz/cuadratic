@@ -1,40 +1,35 @@
 //
-//  AgeBreakdownViewController.swift
+//  HourBreakdownViewController.swift
 //  cuadratic
 //
-//  Created by Ricardo Hdz on 11/29/15.
+//  Created by Ricardo Hdz on 12/1/15.
 //  Copyright © 2015 Ricardo Hdz. All rights reserved.
 //
 
-import Foundation
 import Charts
 import UIKit
 
-class AgeBreakdownViewController: UIViewController {
-    var stats: Stats!
+class HourBreakdownViewController: UIViewController {
     
+    var stats: Stats!
+
     @IBOutlet weak var barChartView: BarChartView!
     
-    var months: [String]!
+    var ageSegments: [String]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        months = ["12am", "1am", "2am", "3am", "4am", "5am", "6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"]
+        ageSegments = ["13-17", "18-24", "25-34", "35-44", "45-54", "55+"]
         
-        let hours = stats.hourBreakdown
-        var hoursToDisplay = [Double]()
-        for (var index = 0; index < hours.count; index++) {
-            let hour = hours[index]
-            hoursToDisplay.append(hour.valueForKey("checkins") as! Double)
+        let ageSegment = stats.ageBreakdown
+        var ageToDisplay = [Double]()
+        for (var index = 0; index < ageSegment.count; index++) {
+            let age = ageSegment[index]
+            ageToDisplay.append(age.valueForKey("checkins") as! Double)
         }
         
-        setChart(months, values: hoursToDisplay)
-        
-        let backButton = UIBarButtonItem(title: "Back2", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        self.navigationItem.backBarButtonItem = backButton
-        
-        self.navigationController!.navigationBar.topItem!.title = "Back"
+        setChart(ageSegments, values: ageToDisplay)
     }
     
     func setChart(dataPoints:[String], values:[Double] ) {
@@ -67,9 +62,9 @@ class AgeBreakdownViewController: UIViewController {
         chartDataSet.drawValuesEnabled = false
         
         
-        let chartData = BarChartData(xVals: months, dataSet: chartDataSet)
+        let chartData = BarChartData(xVals: ageSegments, dataSet: chartDataSet)
         barChartView.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
-
+        
         // Hide Background Grid Grid
         barChartView.drawGridBackgroundEnabled = false
         barChartView.drawBarShadowEnabled = false

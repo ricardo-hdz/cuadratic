@@ -54,7 +54,7 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
         let venue = venues[indexPath.row]
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("venueDetailController") as! VenueDetailViewController
         controller.venue = venue
-        controller.title = venue.name
+        //controller.title = venue.name
         self.navigationController?.pushViewController(controller, animated: true)
     }
     

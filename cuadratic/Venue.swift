@@ -12,7 +12,6 @@ class Venue: NSObject {
     var name: String
     var location: Location
     var category: Category
-    //var stats: Stats
     var photos: [Photo]?
     var isFavorite: Bool
 
@@ -21,7 +20,6 @@ class Venue: NSObject {
         name = (dictionary["name"] as? String)!
         category = Category(dictionary: dictionary["categories"] as! [[String:AnyObject]])
         location = (dictionary["location"] as? Location)!
-        //stats = (dictionary["stats"] as? Stats)!
         isFavorite = false
     }
     
