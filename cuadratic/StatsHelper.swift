@@ -37,7 +37,8 @@ class StatsHelper: NSObject {
                             "ageBreakdown": stats["ageBreakdown"]!,
                             "hourBreakdown": stats["hourBreakdown"]!
                         ]
-                        let stats = Stats(dictionary: dictionary)
+                        
+                        let stats = Stats(dictionary: dictionary, context: CoreDataHelper.getInstance().temporaryContext)
                         callback(stats: stats, error: nil)
                     } else {
                         callback(stats: nil, error: "Error while requesting stats for venue. No stats found in response")

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import CoreData
 
 class SearchViewController: VenueListViewController, UISearchBarDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     
@@ -71,7 +72,6 @@ class SearchViewController: VenueListViewController, UISearchBarDelegate, CLLoca
             ]
         } else {
             if (location == nil) {
-                print("Requesting locations as == nil")
                 dispatch_async(dispatch_get_main_queue(), {
                     self.locationManager.requestLocation()
                 })
@@ -92,7 +92,6 @@ class SearchViewController: VenueListViewController, UISearchBarDelegate, CLLoca
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Updated location")
         self.location = manager.location?.coordinate
     }
     
@@ -101,17 +100,11 @@ class SearchViewController: VenueListViewController, UISearchBarDelegate, CLLoca
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        print("Statis changed")
-        print("Status: \(status)")
         if (status == CLAuthorizationStatus.AuthorizedWhenInUse) {
             // request location
             if (CLLocationManager.locationServicesEnabled()) {
-                
                 //locationManager.startUpdatingLocation()
                 locationManager.requestLocation()
-                print("Locating")
-            } else {
-                print("Location disabled")
             }
         }
     }
@@ -121,6 +114,8 @@ class SearchViewController: VenueListViewController, UISearchBarDelegate, CLLoca
     
     func searchVenues() {
         venues = [Venue]()
+        favoriteIds = FavoritesHelper.getInstance().getFavoriteIds()
+        
         searchIndicator.startAnimating()
         var params = getLocationForQuery()
         let query = self.searchBar.text!
@@ -130,11 +125,10 @@ class SearchViewController: VenueListViewController, UISearchBarDelegate, CLLoca
         
         SearchHelper.searchVenues(params) { venues, error in
             if let error = error {
-                // display error in UI
+                // TODO: display error in UI
                 print(error)
                 self.searchIndicator.stopAnimating()
             } else {
-                print("Venues count \(venues?.count)")
                 if (venues?.count > 0) {
                     self.venues = venues!
                     self.refreshVenues()

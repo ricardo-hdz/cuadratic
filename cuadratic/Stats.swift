@@ -7,16 +7,29 @@
 //
 
 import Foundation
-class Stats:NSObject {
-    var totalCheckins: Int
-    var twitterCheckins: Int
-    var facebookCheckins: Int
-    var maleCheckins: Int
-    var femaleCheckins: Int
-    var ageBreakdown: [NSDictionary]
-    var hourBreakdown: [NSDictionary]
+import CoreData
+
+class Stats:NSManagedObject {
     
-    init(dictionary: [String: AnyObject]) {
+    @NSManaged var totalCheckins: Int
+    @NSManaged var twitterCheckins: Int
+    @NSManaged var facebookCheckins: Int
+    @NSManaged var maleCheckins: Int
+    @NSManaged var femaleCheckins: Int
+    @NSManaged var ageBreakdown: [NSDictionary]
+    @NSManaged var hourBreakdown: [NSDictionary]
+    
+    // Relationship Data
+    @NSManaged var venue: Venue
+    
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entityForName("Stats", inManagedObjectContext: context)
+        super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        
         totalCheckins = dictionary["totalCheckins"] as! Int
         twitterCheckins = dictionary["twitterCheckins"] as! Int
         facebookCheckins = dictionary["facebookCheckins"] as! Int

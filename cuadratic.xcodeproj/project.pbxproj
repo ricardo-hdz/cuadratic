@@ -22,7 +22,6 @@
 		E6A1DCBB1C024F760034443B /* LoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCBA1C024F760034443B /* LoginHelper.swift */; };
 		E6A1DCBD1C0266D80034443B /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCBC1C0266D80034443B /* ResultCell.swift */; };
 		E6A1DCBF1C0271050034443B /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCBE1C0271050034443B /* SearchViewController.swift */; };
-		E6A1DCC11C0275430034443B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCC01C0275430034443B /* Result.swift */; };
 		E6A1DCC31C027B2A0034443B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCC21C027B2A0034443B /* User.swift */; };
 		E6A1DCC61C027C720034443B /* cuadratic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCC41C027C720034443B /* cuadratic.xcdatamodeld */; };
 		E6A1DCC81C027D910034443B /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DCC71C027D910034443B /* CoreDataHelper.swift */; };
@@ -47,6 +46,8 @@
 		E6A1DD191C0B84E70034443B /* AgeBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1DD181C0B84E70034443B /* AgeBreakdownViewController.swift */; };
 		E6B79D8F1C0E982700F61EDD /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B79D8E1C0E982700F61EDD /* ChartViewController.swift */; };
 		E6B79D931C0E989B00F61EDD /* HourBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B79D921C0E989B00F61EDD /* HourBreakdownViewController.swift */; };
+		E6B79D951C0F57B900F61EDD /* BaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B79D941C0F57B900F61EDD /* BaseHelper.swift */; };
+		E6B79D971C0F812F00F61EDD /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B79D961C0F812F00F61EDD /* UserHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,7 +133,6 @@
 		E6A1DCBA1C024F760034443B /* LoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHelper.swift; sourceTree = "<group>"; };
 		E6A1DCBC1C0266D80034443B /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
 		E6A1DCBE1C0271050034443B /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		E6A1DCC01C0275430034443B /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		E6A1DCC21C027B2A0034443B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E6A1DCC51C027C720034443B /* cuadratic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cuadratic.xcdatamodel; sourceTree = "<group>"; };
 		E6A1DCC71C027D910034443B /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
@@ -156,6 +156,8 @@
 		E6A1DD181C0B84E70034443B /* AgeBreakdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeBreakdownViewController.swift; sourceTree = "<group>"; };
 		E6B79D8E1C0E982700F61EDD /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 		E6B79D921C0E989B00F61EDD /* HourBreakdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourBreakdownViewController.swift; sourceTree = "<group>"; };
+		E6B79D941C0F57B900F61EDD /* BaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHelper.swift; sourceTree = "<group>"; };
+		E6B79D961C0F812F00F61EDD /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		F405B23385F7C8DC27088D89 /* Pods-cuadratic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuadratic.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuadratic/Pods-cuadratic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -269,7 +271,6 @@
 				E694A2DB1BFD4E1000D18BED /* NetworkUtilities.swift */,
 				E694A2D81BFD4DD400D18BED /* NetworkRequestHelper.swift */,
 				E6A1DCBA1C024F760034443B /* LoginHelper.swift */,
-				E6A1DCC01C0275430034443B /* Result.swift */,
 				E6A1DCC21C027B2A0034443B /* User.swift */,
 				E6A1DCC41C027C720034443B /* cuadratic.xcdatamodeld */,
 				E6A1DCCD1C0289080034443B /* Venue.swift */,
@@ -324,6 +325,8 @@
 				E6A1DCD91C065A5F0034443B /* CacheHelper.swift */,
 				E6A1DCE41C07D9C10034443B /* FavoritesHelper.swift */,
 				E6A1DCE81C0A6F0B0034443B /* StatsHelper.swift */,
+				E6B79D941C0F57B900F61EDD /* BaseHelper.swift */,
+				E6B79D961C0F812F00F61EDD /* UserHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -569,6 +572,7 @@
 				E6B79D8F1C0E982700F61EDD /* ChartViewController.swift in Sources */,
 				E6A1DCD21C028DB00034443B /* Stats.swift in Sources */,
 				E6A1DCD81C0630AA0034443B /* PhotoHelper.swift in Sources */,
+				E6B79D971C0F812F00F61EDD /* UserHelper.swift in Sources */,
 				E6A1DCDF1C07A4870034443B /* ResultHeaderCellTableViewCell.swift in Sources */,
 				E6A1DCCE1C0289080034443B /* Venue.swift in Sources */,
 				E6A1DCD01C0289C40034443B /* Location.swift in Sources */,
@@ -580,12 +584,12 @@
 				E694A2DC1BFD4E1000D18BED /* NetworkRequestConstants.swift in Sources */,
 				E6A1DCBD1C0266D80034443B /* ResultCell.swift in Sources */,
 				E6A1DCE11C07A8890034443B /* FavoritesViewController.swift in Sources */,
+				E6B79D951C0F57B900F61EDD /* BaseHelper.swift in Sources */,
 				E6A1DCBF1C0271050034443B /* SearchViewController.swift in Sources */,
 				E694A2A61BFD1F8800D18BED /* AppDelegate.swift in Sources */,
 				E6A1DCEC1C0AAD620034443B /* Color.swift in Sources */,
 				E6A1DD191C0B84E70034443B /* AgeBreakdownViewController.swift in Sources */,
 				E694A2DD1BFD4E1000D18BED /* NetworkUtilities.swift in Sources */,
-				E6A1DCC11C0275430034443B /* Result.swift in Sources */,
 				E6A1DCD61C06297A0034443B /* Photo.swift in Sources */,
 				E6A1DCBB1C024F760034443B /* LoginHelper.swift in Sources */,
 				E6A1DCC81C027D910034443B /* CoreDataHelper.swift in Sources */,

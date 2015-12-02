@@ -86,14 +86,15 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     func getVenueStats() {
         StatsHelper.getVenueStats(venue.id) {stats, error in
             if let error = error {
+                // TODO
                 print("Error while requesting stats: \(error)")
             } else {
                 if let stats = stats {
-                        self.stats = stats
-                        dispatch_async(dispatch_get_main_queue(), {
+                    self.stats = stats
+                    self.venue.stats = stats
+                    dispatch_async(dispatch_get_main_queue(), {
                         self.displayVenueStats(stats)
                     })
-                    
                 }
             }
         }
@@ -105,15 +106,6 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         facebookCheckins.text = "\(stats.facebookCheckins)"
         femaleCheckins.text = "\(stats.femaleCheckins)"
         maleCheckins.text = "\(stats.maleCheckins)"
-        
-        /*let ageLabels = getAgeLabels()
-        for (var index = 0; index < ageLabels.count; index++) {
-            
-            let age = stats.ageBreakdown[index]
-            print("Age: \(age)")
-            ageLabels[index].text = "\(age.valueForKey("checkins")!)"
-        }*/
-        
     }
 
 }

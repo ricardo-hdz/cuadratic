@@ -9,20 +9,6 @@
 import Foundation
 class FavoritesHelper {
     
-    var favorites = [FavoriteVenue]()
-    var favoritesDictionary = [String:FavoriteVenue]()
-    var favoriteIds = [String]()
-    
-    init() {
-        loadData()
-    }
-    
-    func loadData() {
-        favorites = CoreDataHelper.getInstance().fetchData("FavoriteVenue") as! [FavoriteVenue]
-        favoritesDictionary = getFavoritesDictionary()
-        favoriteIds = getFavoriteIds()
-    }
-    
     class func getInstance() -> FavoritesHelper {
         struct Singleton {
             static var instance = FavoritesHelper()
@@ -30,11 +16,13 @@ class FavoritesHelper {
         return Singleton.instance
     }
     
-    func getFavorites() -> [FavoriteVenue] {
-        return favorites
+    func getFavorites() -> [Venue] {
+        let user = UserHelper.getInstance().getCurrentUser()
+        return user!.favorites.array as! [Venue]
     }
     
     func getFavoriteIds() -> [String] {
+        let favorites = getFavorites()
         var ids = [String]()
         for favorite in favorites {
             ids.append(favorite.id)
@@ -42,17 +30,18 @@ class FavoritesHelper {
         return ids
     }
     
-    func getFavoritesDictionary() -> [String:FavoriteVenue] {
-        let favorites:[FavoriteVenue] = getFavorites()
-        var favoritesDictionary = [String:FavoriteVenue]()
+    func getFavoritesDictionary() -> [String:Venue] {
+        let favorites:[Venue] = getFavorites()
+        var favoritesDictionary = [String:Venue]()
         for favorite in favorites {
             favoritesDictionary[favorite.id] = favorite
         }
         return favoritesDictionary
     }
     
-    func getFavorite(venueId: String) -> FavoriteVenue? {
-        if let venue = favoritesDictionary[venueId] {
+    func getFavorite(venueId: String) -> Venue? {
+        let dictionary = getFavoritesDictionary()
+        if let venue = dictionary[venueId] {
             return venue
         } else {
             return nil

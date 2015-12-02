@@ -13,7 +13,6 @@ class PhotoHelper: NSObject {
         let requestHelper = NetworkRequestHelper.getInstance()
         let _ = requestHelper.dataRequest(url) {data, error in
             if let error = error {
-                print("Error while requesting image at URL: \(url)")
                 callback(image: nil, error: error)
             } else {
                 let image = UIImage(data: data!)

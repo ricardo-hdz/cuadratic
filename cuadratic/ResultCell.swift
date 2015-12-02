@@ -21,30 +21,46 @@ class ResultCell: UITableViewCell {
     @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
     
     @IBAction func updateFavorite(sender: AnyObject) {
-        if (!venue.isFavorite) {
-            let dictionary:[String:AnyObject] = [
-                "id": venue.id,
-                "name": venue.name,
-                "location": venue.location.fullLocationString,
-                "category": venue.category.name,
-                "thumbnail": (venue.thumbnailPhoto?.id)!
-            ]
+        if venue.favorite == nil {
+            print("Favorite is nill")
+            let sharedContext = CoreDataHelper.getInstance().sharedContext
             
-            let _ = FavoriteVenue(dictionary: dictionary, context: CoreDataHelper.getInstance().sharedContext)
+            let venueData = BaseHelper.getDictionaryForManagedObject(venue)
+            let venueContext = Venue(dictionary: venueData, context: sharedContext)
+            
+            let locationData = BaseHelper.getDictionaryForManagedObject(venue.location!)
+            let locationContext = Location(dictionary: locationData, context: sharedContext)
+            
+            let categoryData = BaseHelper.getDictionaryForManagedObject(venue.category!)
+            print("Category data: \(categoryData)")
+            let category = Category(dictionary: [categoryData], context: sharedContext)
+            
+            venueContext.location = locationContext
+            venueContext.category = category
+            
+            let photoData = BaseHelper.getDictionaryForManagedObject(venue.thumbnailPhoto!)
+            let photo = Photo(dictionary: photoData, context: sharedContext)
+            venueContext.photos = NSOrderedSet(array: [photo])
+
+            if let user = UserHelper.getInstance().getCurrentUser() {
+                venueContext.favorite = user
+            }
+            
+            venue = venueContext
+            
             CoreDataStackManager.sharedInstance().saveContext()
-            venue.isFavorite = true
+            
             dispatch_async(dispatch_get_main_queue(), {
-                print("Saving fav")
-                self.favoriteButton.setTitle("Favorite", forState: UIControlState.Normal)
+                self.favoriteButton.setTitle("Remove Favorite", forState: UIControlState.Normal)
                 self.reloadInputViews()
             })
         } else {
-            let favorite = FavoritesHelper.getInstance().getFavorite(venue.id)
-            CoreDataStackManager.sharedInstance().managedObjectContext.deleteObject(favorite!)
+            venue.favorite = nil
+            let sharedContext = CoreDataHelper.getInstance().sharedContext
+            sharedContext.refreshObject(venue, mergeChanges: true)
             CoreDataStackManager.sharedInstance().saveContext()
-            venue.isFavorite = false
+            
             dispatch_async(dispatch_get_main_queue(), {
-                print("Deleteing fav")
                 self.favoriteButton.setTitle("Save Favorite", forState: UIControlState.Normal)
                 self.reloadInputViews()
             })
