@@ -7,16 +7,28 @@
 //
 
 import Foundation
-class Category:NSObject {
-    var name: String = "NA"
-    var icon: String = "NA"
+import CoreData
+
+class Category:NSManagedObject {
     
-    init (dictionary: [[String: AnyObject]]) {
+    @NSManaged var name: String!
+    
+    // Relationship Data
+    @NSManaged var venue: Venue
+    
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    init (dictionary: [[String: AnyObject]], context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entityForName("Category", inManagedObjectContext: context)
+        super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        
         for category in dictionary {
+            name = category["name"] as! String
+            
             if let _ = category["primary"] as? Bool {
-                name = category["name"] as! String
-                let iconObject = category["icon"] as! [String: String]
-                icon = iconObject["prefix"]! + iconObject["suffix"]!
+                break
             }
         }
     }

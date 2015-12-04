@@ -30,8 +30,6 @@ class NetworkRequestHelper: NSObject {
         if (params != nil) {
             serviceEndpoint = serviceEndpoint + self.escapeParams(params!)
         }
-        
-        print("Endpoint: \(serviceEndpoint)")
 
         let url = NSURL(string: serviceEndpoint)
         
@@ -52,9 +50,6 @@ class NetworkRequestHelper: NSObject {
         
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if let error = error {
-                print("Data: \(data)")
-                print("Response: \(response)")
-                                print("Error: \(error)")
                 callback(result: nil, error: error)
             } else {
                 self.parseReponseData(data!, postProcessor: postProcessor, callback: callback)

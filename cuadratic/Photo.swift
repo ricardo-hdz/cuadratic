@@ -7,11 +7,16 @@
 //
 
 import UIKit
-class Photo: NSObject {
-    var id: String!
-    var prefix: String!
-    var suffix: String!
-    var documentPath: String
+import CoreData
+
+class Photo: NSManagedObject {
+    @NSManaged var id: String!
+    @NSManaged var prefix: String!
+    @NSManaged var suffix: String!
+    @NSManaged var documentPath: String!
+    
+    // Relationship Data
+    @NSManaged var venue: Venue
     
     struct size {
         static let thumbnail = "36x36"
@@ -20,11 +25,22 @@ class Photo: NSObject {
         static let large = "500x500"
     }
     
-    init(dictionary: [String: AnyObject]) {
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entityForName("Photo", inManagedObjectContext: context)
+        super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        
         id = dictionary["id"] as! String!
         prefix = dictionary["prefix"] as! String!
         suffix = dictionary["suffix"] as! String!
-        documentPath = ""
+        if let path = dictionary["documentPath"] as! String! {
+            documentPath = path
+        } else {
+            documentPath = ""
+        }
     }
     
     func getUrl(size: String) -> String {

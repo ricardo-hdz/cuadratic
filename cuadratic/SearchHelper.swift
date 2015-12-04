@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreData
+
 class SearchHelper {
     
     class func searchVenues(params: [String:AnyObject], callback: (results: [Venue]?, error: String?) -> Void) {
@@ -22,16 +24,21 @@ class SearchHelper {
                     if let venues = response["venues"] as? [[String:AnyObject]] {
                         var venueResults = [Venue]()
                         for var venueData in venues {
+                            // Need to init category & photos
+                            let temporaryContext = CoreDataHelper.getInstance().temporaryContext
+                            
+                            let venue = Venue(dictionary: venueData, context: temporaryContext)
+
                             let locationData = venueData["location"] as! [String: AnyObject]
-                            let location = Location(dictionary: locationData)
-                            venueData["location"] = location
+                            let location = Location(dictionary: locationData, context: temporaryContext)
+                            venue.location = location
                             
-                            /*let statsData = venueData["stats"] as! [String:AnyObject]
-                            let stats = Stats(dictionary: statsData)
-                            venueData["stats"] = stats*/
+                            let categoriesData = venueData["categories"] as! [[String: AnyObject]]
+                            let category = Category(dictionary: categoriesData, context: temporaryContext)
+                            venue.category = category
                             
-                            let venue = Venue(dictionary: venueData)
                             venueResults.append(venue)
+                            
                         }
                         callback(results: venueResults, error: nil)
                     } else {
@@ -58,9 +65,10 @@ class SearchHelper {
                 if let response = result!.valueForKey("response") as? [String: AnyObject] {
                     if let photos = response["photos"] as? [String:AnyObject] {
                         if let items = photos["items"] as? [[String:AnyObject]] {
+                            let temporaryContext = CoreDataHelper.getInstance().temporaryContext
                             var photoResults = [Photo]()
                             for item in items {
-                                let photo = Photo(dictionary: item)
+                                let photo = Photo(dictionary: item, context: temporaryContext)
                                 photoResults.append(photo)
                             }
                             callback(photos: photoResults, error: nil)

@@ -21,10 +21,6 @@ class LoginViewController: UIViewController {
     
     var CODE: NSString?
     
-    lazy var sharedContext: NSManagedObjectContext = {
-        return CoreDataStackManager.sharedInstance().managedObjectContext
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         icon.font = UIFont.fontAwesomeOfSize(100)
@@ -37,13 +33,10 @@ class LoginViewController: UIViewController {
     }
     
     func initializeApp() {
-        // verify of logged in, if not request
-        let userData = fetchUserData()
-        if (userData.count > 0) {
+        let user = UserHelper.getInstance().getCurrentUser()
+        if (user != nil) {
             indicator.startAnimating()
-            let user = userData[0] as User
-            NetworkRequestHelper.getInstance().token = user.token
-            print("Token from session: \(user.token)")
+            NetworkRequestHelper.getInstance().token = user!.token
             indicator.stopAnimating()
             displayLandController()
         } else {
@@ -52,13 +45,8 @@ class LoginViewController: UIViewController {
         }
     }
     
-    func fetchUserData() -> [User] {
-        return CoreDataHelper.getInstance().fetchData("User") as! [User]
-    }
-    
     func codeReceived(notification: NSNotification) {
         let object = notification.object!
-        print("Notfication received: \(object)")
         requestAccessTokenWithCode(object as! String)
     }
     
@@ -70,7 +58,6 @@ class LoginViewController: UIViewController {
                 self.errorLabel.text = error
             } else {
                 // save token in session and segue
-                print("Token: \(token)")
                 self.setSessionToken(token!)
                 self.indicator.stopAnimating()
                 self.displayLandController()
@@ -79,17 +66,14 @@ class LoginViewController: UIViewController {
     }
     
     func displayLandController() {
-        print("Displaying controller")
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("landingTabBarController") as! UITabBarController
         self.presentViewController(controller, animated: true, completion: nil)
-        //self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func setSessionToken(token: String) {
-        let _ = User(tokenValue: token, context: sharedContext)
+        let _ = User(tokenValue: token, context: CoreDataHelper.getInstance().sharedContext)
         NetworkRequestHelper.getInstance().token = token
         CoreDataStackManager.sharedInstance().saveContext()
-        print("Token Saved")
     }
     
     @IBAction func connectToFoursquare(sender: AnyObject) {

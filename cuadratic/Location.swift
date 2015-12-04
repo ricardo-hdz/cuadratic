@@ -7,25 +7,49 @@
 //
 
 import Foundation
-class Location: NSObject {
-    var address: String
-    var lat: Double
-    var lon: Double
-    //var distance: Int
-    var city: String
-    var state: String
-    var country: String
-    var formattedAddress: [String]
+import CoreData
+
+class Location: NSManagedObject {
     
-    init(dictionary: [String: AnyObject]) {
+    @NSManaged var address: String
+    @NSManaged var lat: Double
+    @NSManaged var lon: Double
+    @NSManaged var city: String
+    @NSManaged var state: String
+    @NSManaged var country: String
+    @NSManaged var formattedAddress: [String]
+    
+    // Relationship Data
+    @NSManaged var venue: Venue
+    
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    }
+    
+    init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entityForName("Location", inManagedObjectContext: context)
+        super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        
         address = (dictionary["address"] as? String) ?? "NA"
         lat = (dictionary["lat"] as? Double) ?? 0.0
         lon = (dictionary["lng"] as? Double) ?? 0.0
-        //distance = dictionary["distance"] as! Int
         city = (dictionary["city"] as? String) ?? "NA"
         state = (dictionary["state"] as? String) ?? "NA"
         country = (dictionary["country"] as? String) ?? "NA"
         formattedAddress = (dictionary["formattedAddress"] as? [String]) ?? ["NA"]
+    }
+    
+    init(object: Location, context: NSManagedObjectContext) {
+        let entity = NSEntityDescription.entityForName("Location", inManagedObjectContext: context)
+        super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        
+        address = object.address
+        lat = object.lat
+        lon = object.lon
+        city = object.city
+        state = object.state
+        country = object.country
+        formattedAddress = object.formattedAddress
     }
     
     var fullLocationString: String {

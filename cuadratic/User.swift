@@ -12,6 +12,9 @@ import CoreData
 class User: NSManagedObject {
     @NSManaged var token: String
     
+    // Relationships
+    @NSManaged var favorites: NSMutableOrderedSet
+    
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
@@ -19,8 +22,9 @@ class User: NSManagedObject {
     init(tokenValue: String, context: NSManagedObjectContext) {
         let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: context)
         super.init(entity: entity!, insertIntoManagedObjectContext: context)
-        
         token = tokenValue
     }
+    
+    
     
 }

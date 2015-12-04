@@ -11,6 +11,7 @@ import UIKit
 class VenueListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {    
     
     var venues = [Venue]()
+    var favoriteIds = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,23 +21,27 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
         let venue = venues[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! ResultCell
-        cell.venue = venue
         cell.title.text = venue.name
-        cell.location.text = venue.location.fullLocationString
-        cell.entityType.text = venue.category.name
-        if venue.photos?.count > 0 {
-            let thumbnail = venue.photos![0].image
+        cell.location.text = venue.location!.fullLocationString
+        cell.entityType.text = venue.category!.name
+        if venue.photos!.count > 0 {
+            //let thumbnail = venue.photos[0].image
+            let thumbnail = venue.thumbnailImage
             cell.thumbnail.image = thumbnail
             cell.imageLoadingIndicator.stopAnimating()
         } else {
             cell.imageLoadingIndicator.startAnimating()
             getThumbnailForVenue(indexPath)
         }
-        if ((FavoritesHelper.getInstance().getFavorite(venue.id)) != nil) {
-            // display as favorite
-            venue.isFavorite = true
+        
+        if favoriteIds.contains(venue.id) {
+            venue.favorite = UserHelper.getInstance().getTempUser()
+            cell.favoriteButton.setTitle("Remove Favorite", forState: UIControlState.Normal)
+        } else {
             cell.favoriteButton.setTitle("Favorite", forState: UIControlState.Normal)
         }
+        
+        cell.venue = venue
         
         return cell
     }
@@ -54,7 +59,6 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
         let venue = venues[indexPath.row]
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("venueDetailController") as! VenueDetailViewController
         controller.venue = venue
-        //controller.title = venue.name
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -71,14 +75,12 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
             ]
             SearchHelper.getVenuePhotos(venue.id, params: params) { photos, error in
                 if let error = error {
-                    // ignore and display placelholder
+                    // TODO ignore and display placelholder
                     print("Error getVenuePhotos: \(error)")
                 } else {
-                    // request photo
-                    self.venues[index.row].photos = photos
+                    self.venues[index.row].photos = NSOrderedSet(array: photos!)
                     self.loadThumbnailForVenue(index)
                 }
-                // save in context
             }
         }
         
@@ -91,6 +93,7 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
             if !url!.isEmpty {
                 PhotoHelper.getImage(url!) { image, error in
                     if let error = error {
+                        // TODO
                         print("Unable to get image for URL: \(url). Error: \(error)")
                     } else {
                         dispatch_async(dispatch_get_main_queue(), {
