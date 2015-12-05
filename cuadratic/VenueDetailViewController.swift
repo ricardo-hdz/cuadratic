@@ -115,7 +115,8 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         ageBreakdownLabel.text = ageBreakdownLabel.text!.stringByReplacingOccurrencesOfString("{age}", withString: primeSegment)
         
         let primeHour = stats.getMaxIdFromBreakdown(stats.hourBreakdown, fieldName: "hour")
-        hourBreakdownLabel.text = hourBreakdownLabel.text!.stringByReplacingOccurrencesOfString("{hour}", withString: primeHour)
+        let formattedHour = stats.getFormattedHour(primeHour)
+        hourBreakdownLabel.text = hourBreakdownLabel.text!.stringByReplacingOccurrencesOfString("{hour}", withString: formattedHour)
     }
 
 }

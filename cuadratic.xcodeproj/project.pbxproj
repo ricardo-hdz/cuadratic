@@ -48,6 +48,7 @@
 		E6B79D931C0E989B00F61EDD /* HourBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B79D921C0E989B00F61EDD /* HourBreakdownViewController.swift */; };
 		E6B79D951C0F57B900F61EDD /* BaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B79D941C0F57B900F61EDD /* BaseHelper.swift */; };
 		E6B79D971C0F812F00F61EDD /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B79D961C0F812F00F61EDD /* UserHelper.swift */; };
+		E6B79D9E1C138A9900F61EDD /* StatsFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6B79D9D1C138A9900F61EDD /* StatsFormats.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -158,6 +159,7 @@
 		E6B79D921C0E989B00F61EDD /* HourBreakdownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourBreakdownViewController.swift; sourceTree = "<group>"; };
 		E6B79D941C0F57B900F61EDD /* BaseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseHelper.swift; sourceTree = "<group>"; };
 		E6B79D961C0F812F00F61EDD /* UserHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
+		E6B79D9D1C138A9900F61EDD /* StatsFormats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsFormats.swift; sourceTree = "<group>"; };
 		F405B23385F7C8DC27088D89 /* Pods-cuadratic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuadratic.release.xcconfig"; path = "Pods/Target Support Files/Pods-cuadratic/Pods-cuadratic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -335,6 +337,7 @@
 			isa = PBXGroup;
 			children = (
 				E6A1DCEB1C0AAD620034443B /* Color.swift */,
+				E6B79D9D1C138A9900F61EDD /* StatsFormats.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 				E6A1DCEC1C0AAD620034443B /* Color.swift in Sources */,
 				E6A1DD191C0B84E70034443B /* AgeBreakdownViewController.swift in Sources */,
 				E694A2DD1BFD4E1000D18BED /* NetworkUtilities.swift in Sources */,
+				E6B79D9E1C138A9900F61EDD /* StatsFormats.swift in Sources */,
 				E6A1DCD61C06297A0034443B /* Photo.swift in Sources */,
 				E6A1DCBB1C024F760034443B /* LoginHelper.swift in Sources */,
 				E6A1DCC81C027D910034443B /* CoreDataHelper.swift in Sources */,
