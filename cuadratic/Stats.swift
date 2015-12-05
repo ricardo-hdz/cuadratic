@@ -38,5 +38,22 @@ class Stats:NSManagedObject {
         ageBreakdown = dictionary["ageBreakdown"] as! [NSDictionary]
         hourBreakdown = dictionary["hourBreakdown"] as! [NSDictionary]
     }
+    
+    func getMaxIdFromBreakdown(breakdown: [NSDictionary], fieldName: String) -> String {
+        var result = ""
+        var max = 0
+        for breakdownObject in breakdown {
+            let checkins = breakdownObject.valueForKey("checkins") as! Int
+            let field = "\(breakdownObject.valueForKey(fieldName)!)"
+            
+            if checkins > max {
+                result = field
+                max = checkins
+            } else if checkins == max {
+                result = "\(result), \(field)"
+            }
+        }
+        return result
+    }
 
 }

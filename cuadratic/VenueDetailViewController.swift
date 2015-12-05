@@ -34,6 +34,10 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var viewAgeBreakdown: UIButton!
     @IBOutlet weak var viewHourBreakdown: UIButton!
     
+    @IBOutlet weak var ageBreakdownLabel: UILabel!
+    @IBOutlet weak var hourBreakdownLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
@@ -106,6 +110,12 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         facebookCheckins.text = "\(stats.facebookCheckins)"
         femaleCheckins.text = "\(stats.femaleCheckins)"
         maleCheckins.text = "\(stats.maleCheckins)"
+        
+        let primeSegment = stats.getMaxIdFromBreakdown(stats.ageBreakdown, fieldName: "age")
+        ageBreakdownLabel.text = ageBreakdownLabel.text!.stringByReplacingOccurrencesOfString("{age}", withString: primeSegment)
+        
+        let primeHour = stats.getMaxIdFromBreakdown(stats.hourBreakdown, fieldName: "hour")
+        hourBreakdownLabel.text = hourBreakdownLabel.text!.stringByReplacingOccurrencesOfString("{hour}", withString: primeHour)
     }
 
 }

@@ -725,10 +725,12 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
+                        <outlet property="ageBreakdownLabel" destination="BiT-ot-rNG" id="m69-OV-VzV"/>
                         <outlet property="facebookCheckins" destination="H9A-eG-sC6" id="FxL-cS-KWE"/>
                         <outlet property="facebookIcon" destination="abs-Tx-Vle" id="AV6-r3-1kT"/>
                         <outlet property="femaleCheckins" destination="ZBw-3P-qQb" id="cHz-VX-Mhe"/>
                         <outlet property="femaleIcon" destination="jeX-ZB-WId" id="hKe-vL-O35"/>
+                        <outlet property="hourBreakdownLabel" destination="fMH-9P-3vw" id="tK3-Li-lKx"/>
                         <outlet property="maleCheckins" destination="kDy-sN-vPQ" id="yBJ-vu-tXy"/>
                         <outlet property="maleIcon" destination="3c4-fT-kfJ" id="DEb-Vx-Lof"/>
                         <outlet property="totalCheckins" destination="v48-F2-9RV" id="S9q-HU-hnX"/>
