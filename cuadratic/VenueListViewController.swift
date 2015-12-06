@@ -25,7 +25,6 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
         cell.location.text = venue.location!.fullLocationString
         cell.entityType.text = venue.category!.name
         if venue.photos!.count > 0 {
-            //let thumbnail = venue.photos[0].image
             let thumbnail = venue.thumbnailImage
             cell.thumbnail.image = thumbnail
             cell.imageLoadingIndicator.stopAnimating()
@@ -34,11 +33,13 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
             getThumbnailForVenue(indexPath)
         }
         
-        if favoriteIds.contains(venue.id) {
-            venue.favorite = UserHelper.getInstance().getTempUser()
-            cell.favoriteButton.setTitle("Remove Favorite", forState: UIControlState.Normal)
-        } else {
-            cell.favoriteButton.setTitle("Favorite", forState: UIControlState.Normal)
+        if let favoriteButton = cell.favoriteButton {
+            if favoriteIds.contains(venue.id) {
+                venue.favorite = UserHelper.getInstance().getTempUser()
+                favoriteButton.setTitle("Remove Favorite", forState: UIControlState.Normal)
+            } else {
+                favoriteButton.setTitle("Favorite", forState: UIControlState.Normal)
+            }
         }
         
         cell.venue = venue
@@ -48,11 +49,6 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return venues.count
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableCellWithIdentifier("headerCell") as! ResultHeaderCellTableViewCell
-        return header
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

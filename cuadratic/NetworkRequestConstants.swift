@@ -37,6 +37,7 @@ extension NetworkRequestHelper {
                 static let SEARCH_VENUE = "venues/search"
                 static let SEARCH_VENUE_PHOTOS = "venues/{VENUE_ID}/photos"
                 static let SEARCH_VENUE_STATS = "venues/{VENUE_ID}/stats"
+                static let SEARCH_MANAGED = "venues/managed"
                 
                 struct PARAMS {
                     static let LOCATION = "ll"

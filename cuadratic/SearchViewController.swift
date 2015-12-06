@@ -145,6 +145,11 @@ class SearchViewController: VenueListViewController, UISearchBarDelegate, CLLoca
         }
     }
     
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableCellWithIdentifier("headerCell") as! ResultHeaderCellTableViewCell
+        return header
+    }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if (!searchBar.text!.isEmpty) {
             searchVenues()
