@@ -95,7 +95,6 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
             } else {
                 if let stats = stats {
                     self.stats = stats
-                    self.venue.stats = stats
                     dispatch_async(dispatch_get_main_queue(), {
                         self.displayVenueStats(stats)
                     })
