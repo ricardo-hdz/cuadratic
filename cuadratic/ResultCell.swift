@@ -20,9 +20,14 @@ class ResultCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
     
-    @IBAction func updateFavorite(sender: AnyObject) {
+    @IBOutlet weak var bookmark: UIButton!
+    
+    @IBAction func bookmarkVenue(sender: AnyObject) {
+        toggleBookmark()
+    }
+    
+    func toggleBookmark() {
         if venue.favorite == nil {
-            print("Favorite is nill")
             let sharedContext = CoreDataHelper.getInstance().sharedContext
             
             let venueData = BaseHelper.getDictionaryForManagedObject(venue)
@@ -41,7 +46,7 @@ class ResultCell: UITableViewCell {
             let photoData = BaseHelper.getDictionaryForManagedObject(venue.thumbnailPhoto!)
             let photo = Photo(dictionary: photoData, context: sharedContext)
             venueContext.photos = NSOrderedSet(array: [photo])
-
+            
             if let user = UserHelper.getInstance().getCurrentUser() {
                 venueContext.favorite = user
             }
@@ -51,7 +56,8 @@ class ResultCell: UITableViewCell {
             CoreDataStackManager.sharedInstance().saveContext()
             
             dispatch_async(dispatch_get_main_queue(), {
-                self.favoriteButton.setTitle("Remove Favorite", forState: UIControlState.Normal)
+                self.bookmark.setImage(UIImage(named: "bookmark_filled"), forState: UIControlState.Normal)
+                //self.favoriteButton.setTitle("Remove Favorite", forState: UIControlState.Normal)
                 self.reloadInputViews()
             })
         } else {
@@ -61,7 +67,8 @@ class ResultCell: UITableViewCell {
             CoreDataStackManager.sharedInstance().saveContext()
             
             dispatch_async(dispatch_get_main_queue(), {
-                self.favoriteButton.setTitle("Save Favorite", forState: UIControlState.Normal)
+                //self.favoriteButton.setTitle("Save Favorite", forState: UIControlState.Normal)
+                self.bookmark.setImage(UIImage(named: "bookmark_empty"), forState: UIControlState.Normal)
                 self.reloadInputViews()
             })
         }

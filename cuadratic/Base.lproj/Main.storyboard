@@ -228,8 +228,8 @@
                             <constraint firstItem="jnT-Mn-oeL" firstAttribute="leading" secondItem="O2t-Ok-bFn" secondAttribute="leadingMargin" constant="-25" id="zOY-up-jWN"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="N0c-2T-Wop"/>
-                    <navigationItem key="navigationItem" title="Favorites" id="taO-2z-BWa"/>
+                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmark_menu_icon" id="N0c-2T-Wop"/>
+                    <navigationItem key="navigationItem" title="Bookmarks" id="taO-2z-BWa"/>
                     <connections>
                         <outlet property="favoritesTable" destination="jnT-Mn-oeL" id="er6-F2-eod"/>
                     </connections>
@@ -347,7 +347,7 @@
                             <constraint firstAttribute="trailing" secondItem="wAc-Tt-aif" secondAttribute="trailing" id="vhR-hz-zDq"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="mostViewed" id="OoR-z0-FJh"/>
+                    <tabBarItem key="tabBarItem" title="Managed Venues" image="managed_icon" id="OoR-z0-FJh"/>
                     <navigationItem key="navigationItem" title="Managed Venues" id="Qxn-6c-MWg"/>
                     <connections>
                         <outlet property="managedTable" destination="wAc-Tt-aif" id="o9y-AC-iBY"/>
@@ -410,7 +410,7 @@
                                 <color key="barTintColor" red="0.0" green="0.25098040699958801" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bhb-bY-SVu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bhb-bY-SVu">
                                 <rect key="frame" x="-5" y="108" width="605" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -467,7 +467,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPD-9q-PqT">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EPD-9q-PqT">
                                                     <rect key="frame" x="102" y="27" width="272" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -479,49 +479,44 @@
                                                     <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hA9-Fj-ZLo">
-                                                    <rect key="frame" x="102" y="63" width="80" height="25"/>
-                                                    <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="25" id="wpd-mx-L6j"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <inset key="contentEdgeInsets" minX="4" minY="5" maxX="5" maxY="5"/>
-                                                    <state key="normal" title="Add Favorite">
-                                                        <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="updateFavorite:" destination="fny-mA-fFi" eventType="touchUpInside" id="V50-VP-vnR"/>
-                                                    </connections>
-                                                </button>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="QND-EK-OX8">
                                                     <rect key="frame" x="40" y="40" width="20" height="20"/>
                                                 </activityIndicatorView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOB-Fb-AEZ">
+                                                    <rect key="frame" x="102" y="63" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="EeO-m7-khh"/>
+                                                        <constraint firstAttribute="height" constant="25" id="qJm-s5-9vL"/>
+                                                    </constraints>
+                                                    <state key="normal" image="bookmark_empty" backgroundImage="bookmark_empty"/>
+                                                    <connections>
+                                                        <action selector="bookmarkVenue:" destination="fny-mA-fFi" eventType="touchUpInside" id="jDk-1v-5WT"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="pkw-YP-ryL" firstAttribute="top" secondItem="45F-pl-RdN" secondAttribute="topMargin" constant="-4" id="0ip-uT-oG1"/>
                                                 <constraint firstItem="oeq-yY-pRh" firstAttribute="leading" secondItem="45F-pl-RdN" secondAttribute="leadingMargin" constant="5" id="5aQ-Ju-WJM"/>
-                                                <constraint firstItem="hA9-Fj-ZLo" firstAttribute="leading" secondItem="oeq-yY-pRh" secondAttribute="trailing" constant="14" id="6iv-aN-7Oh"/>
-                                                <constraint firstItem="hA9-Fj-ZLo" firstAttribute="top" secondItem="EPD-9q-PqT" secondAttribute="bottom" constant="15" id="C0d-5M-yDc"/>
                                                 <constraint firstItem="EPD-9q-PqT" firstAttribute="leading" secondItem="pkw-YP-ryL" secondAttribute="leading" id="Cvs-VH-Mzv"/>
                                                 <constraint firstItem="EPD-9q-PqT" firstAttribute="trailing" secondItem="uot-hp-ase" secondAttribute="trailing" id="J91-eX-rfd"/>
                                                 <constraint firstItem="oeq-yY-pRh" firstAttribute="centerY" secondItem="45F-pl-RdN" secondAttribute="centerY" id="JPQ-4b-bhE"/>
+                                                <constraint firstItem="dOB-Fb-AEZ" firstAttribute="top" secondItem="uot-hp-ase" secondAttribute="bottom" constant="1" id="L5R-mF-I9H"/>
                                                 <constraint firstItem="oeq-yY-pRh" firstAttribute="top" secondItem="45F-pl-RdN" secondAttribute="topMargin" constant="5" id="LXO-Nr-cdd"/>
-                                                <constraint firstItem="hA9-Fj-ZLo" firstAttribute="bottom" secondItem="oeq-yY-pRh" secondAttribute="bottom" id="NTK-IO-xRq"/>
                                                 <constraint firstItem="uot-hp-ase" firstAttribute="top" secondItem="pkw-YP-ryL" secondAttribute="bottom" constant="3" id="PuN-iH-Ko5"/>
                                                 <constraint firstItem="EPD-9q-PqT" firstAttribute="leading" secondItem="uot-hp-ase" secondAttribute="leading" id="UKU-97-9rC"/>
                                                 <constraint firstItem="EPD-9q-PqT" firstAttribute="trailing" secondItem="pkw-YP-ryL" secondAttribute="trailing" id="a1L-mw-dxg"/>
-                                                <constraint firstItem="hA9-Fj-ZLo" firstAttribute="leading" secondItem="uot-hp-ase" secondAttribute="leading" id="e6w-be-0MJ"/>
+                                                <constraint firstItem="dOB-Fb-AEZ" firstAttribute="leading" secondItem="oeq-yY-pRh" secondAttribute="trailing" constant="14" id="aU7-YS-rxx"/>
+                                                <constraint firstItem="dOB-Fb-AEZ" firstAttribute="leading" secondItem="uot-hp-ase" secondAttribute="leading" id="gRb-2R-JnV"/>
                                                 <constraint firstItem="EPD-9q-PqT" firstAttribute="top" secondItem="45F-pl-RdN" secondAttribute="topMargin" constant="19" id="lD5-RF-rEb"/>
                                                 <constraint firstItem="QND-EK-OX8" firstAttribute="centerX" secondItem="oeq-yY-pRh" secondAttribute="centerX" id="qHP-yG-zmH"/>
-                                                <constraint firstItem="hA9-Fj-ZLo" firstAttribute="top" secondItem="uot-hp-ase" secondAttribute="bottom" constant="1" id="rGf-xJ-kjs"/>
                                                 <constraint firstItem="QND-EK-OX8" firstAttribute="centerY" secondItem="oeq-yY-pRh" secondAttribute="centerY" id="rIg-my-Bxg"/>
+                                                <constraint firstItem="dOB-Fb-AEZ" firstAttribute="bottom" secondItem="oeq-yY-pRh" secondAttribute="bottom" id="xW4-n7-mgw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="bookmark" destination="dOB-Fb-AEZ" id="9aT-Rx-2tJ"/>
                                             <outlet property="entityType" destination="EPD-9q-PqT" id="ue3-5e-bjK"/>
-                                            <outlet property="favoriteButton" destination="hA9-Fj-ZLo" id="uRx-Av-jMe"/>
                                             <outlet property="imageLoadingIndicator" destination="QND-EK-OX8" id="7S1-Dj-Kqy"/>
                                             <outlet property="location" destination="uot-hp-ase" id="gJN-SZ-QMw"/>
                                             <outlet property="thumbnail" destination="oeq-yY-pRh" id="06B-uo-HO4"/>
@@ -573,7 +568,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="X8a-8b-uHm"/>
+                    <tabBarItem key="tabBarItem" title="Search Venues" image="search_icon" selectedImage="search_icon" id="X8a-8b-uHm"/>
                     <navigationItem key="navigationItem" title="Search Venues" id="5gK-Dw-2Pl">
                         <barButtonItem key="backBarButtonItem" title="Venues" id="yzc-sL-QRg"/>
                     </navigationItem>
@@ -979,7 +974,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bookmark_empty" width="24" height="24"/>
+        <image name="bookmark_menu_icon" width="25" height="25"/>
         <image name="connect" width="300" height="46"/>
+        <image name="managed_icon" width="25" height="25"/>
         <image name="poweredby2" width="600" height="100"/>
+        <image name="search_icon" width="25" height="25"/>
     </resources>
 </document>

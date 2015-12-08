@@ -30,8 +30,6 @@ class NetworkRequestHelper: NSObject {
         if (params != nil) {
             serviceEndpoint = serviceEndpoint + self.escapeParams(params!)
         }
-        
-        print("Endpoint: \(serviceEndpoint)")
 
         let url = NSURL(string: serviceEndpoint)
         

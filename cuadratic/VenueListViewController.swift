@@ -33,12 +33,27 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
             getThumbnailForVenue(indexPath)
         }
         
-        if let favoriteButton = cell.favoriteButton {
+        if let favoriteButton = cell.bookmark {
             if favoriteIds.contains(venue.id) {
                 venue.favorite = UserHelper.getInstance().getTempUser()
-                favoriteButton.setTitle("Remove Favorite", forState: UIControlState.Normal)
+                cell.bookmark.setImage(UIImage(named: "bookmark_filled"), forState: UIControlState.Normal)
+                
+
+                /*dispatch_async(dispatch_get_main_queue(), {
+                    print("Is favorite: \(venue.name)")
+                    favoriteButton.setImage(UIImage(named: "bookkmark_filled"), forState: UIControlState.Normal)
+                    
+                    
+                    self.reloadInputViews()
+                })*/
+                
             } else {
-                favoriteButton.setTitle("Favorite", forState: UIControlState.Normal)
+                cell.bookmark.setImage(UIImage(named: "bookmark_empty"), forState: UIControlState.Normal)
+                //self.reloadInputViews()
+
+                /*dispatch_async(dispatch_get_main_queue(), {
+                    favoriteButton.setImage(UIImage(named: "boorkmark_empty"), forState: UIControlState.Normal)
+                })*/
             }
         }
         
