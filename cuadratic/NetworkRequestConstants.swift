@@ -14,6 +14,8 @@ extension NetworkRequestHelper {
         static let CLIENT_SECRET = "23CTIW0MZQSGROBU2Z3XYG3DWKWZSE1LDMGR3V4LWKMBW4AP"
         static let REDIRECT_URI = "cuadratic://foursquare"
         
+        static let GOOGLE_PLACES_API_KEY = "AIzaSyAg9m-h5tpewZ8O9nkvgIUoJQp9r_9BaMI"
+        
         struct LOGIN {
             static let AUTH_ENDPOINT = "https://foursquare.com/oauth2/authenticate" +
                 "?client_id=" + Constants.CLIENT_ID +

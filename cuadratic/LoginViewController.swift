@@ -67,7 +67,7 @@ class LoginViewController: UIViewController {
     
     func displayLandController() {
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("landingTabBarController") as! UITabBarController
-        self.presentViewController(controller, animated: true, completion: nil)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     func setSessionToken(token: String) {
