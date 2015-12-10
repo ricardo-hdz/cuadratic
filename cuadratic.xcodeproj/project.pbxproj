@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0DB93E7EA84D0B39AAB1CA8E /* Pods_cuadratic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6ED23D089F4B62BC400135 /* Pods_cuadratic.framework */; };
+		E67459171C178C6400DEAA24 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67459161C178C6400DEAA24 /* ViewConstants.swift */; };
+		E674591C1C17924E00DEAA24 /* SearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674591B1C17924E00DEAA24 /* SearchBarExtension.swift */; };
+		E674591E1C179F5B00DEAA24 /* AutocompleteResultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674591D1C179F5B00DEAA24 /* AutocompleteResultsExtension.swift */; };
+		E67459201C17A04400DEAA24 /* LocationManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674591F1C17A04400DEAA24 /* LocationManagerExtension.swift */; };
 		E694A2A61BFD1F8800D18BED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E694A2A51BFD1F8800D18BED /* AppDelegate.swift */; };
 		E694A2AB1BFD1F8800D18BED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E694A2A91BFD1F8800D18BED /* Main.storyboard */; };
 		E694A2AD1BFD1F8800D18BED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E694A2AC1BFD1F8800D18BED /* Assets.xcassets */; };
@@ -113,6 +117,10 @@
 /* Begin PBXFileReference section */
 		9A6ED23D089F4B62BC400135 /* Pods_cuadratic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cuadratic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACC51E3282EF18F051DE2409 /* Pods-cuadratic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuadratic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuadratic/Pods-cuadratic.debug.xcconfig"; sourceTree = "<group>"; };
+		E67459161C178C6400DEAA24 /* ViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
+		E674591B1C17924E00DEAA24 /* SearchBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarExtension.swift; sourceTree = "<group>"; };
+		E674591D1C179F5B00DEAA24 /* AutocompleteResultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteResultsExtension.swift; sourceTree = "<group>"; };
+		E674591F1C17A04400DEAA24 /* LocationManagerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManagerExtension.swift; sourceTree = "<group>"; };
 		E694A2A21BFD1F8800D18BED /* cuadratic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cuadratic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E694A2A51BFD1F8800D18BED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E694A2AA1BFD1F8800D18BED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -207,6 +215,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E674591A1C1791FB00DEAA24 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E674591B1C17924E00DEAA24 /* SearchBarExtension.swift */,
+				E674591D1C179F5B00DEAA24 /* AutocompleteResultsExtension.swift */,
+				E674591F1C17A04400DEAA24 /* LocationManagerExtension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		E694A2991BFD1F8800D18BED = {
 			isa = PBXGroup;
 			children = (
@@ -290,6 +308,7 @@
 			children = (
 				E6A1DCBC1C0266D80034443B /* ResultCell.swift */,
 				E6A1DCDE1C07A4870034443B /* ResultHeaderCellTableViewCell.swift */,
+				E67459161C178C6400DEAA24 /* ViewConstants.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -297,6 +316,7 @@
 		E694A2D51BFD4D2800D18BED /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E674591A1C1791FB00DEAA24 /* Extensions */,
 				E6A1DCDB1C0767B00034443B /* Helpers */,
 				E694A2E31BFD511800D18BED /* LoginViewController.swift */,
 				E6A1DCBE1C0271050034443B /* SearchViewController.swift */,
@@ -584,6 +604,7 @@
 				E694A2E41BFD511800D18BED /* LoginViewController.swift in Sources */,
 				E6A1DCE71C0A54C00034443B /* VenueDetailViewController.swift in Sources */,
 				E6A1DCD41C02A1150034443B /* Category.swift in Sources */,
+				E674591C1C17924E00DEAA24 /* SearchBarExtension.swift in Sources */,
 				E694A2DC1BFD4E1000D18BED /* NetworkRequestConstants.swift in Sources */,
 				E6A1DCBD1C0266D80034443B /* ResultCell.swift in Sources */,
 				E6A1DCE11C07A8890034443B /* FavoritesViewController.swift in Sources */,
@@ -596,9 +617,12 @@
 				E6B79D9E1C138A9900F61EDD /* StatsFormats.swift in Sources */,
 				E6A1DCD61C06297A0034443B /* Photo.swift in Sources */,
 				E6A1DCBB1C024F760034443B /* LoginHelper.swift in Sources */,
+				E67459201C17A04400DEAA24 /* LocationManagerExtension.swift in Sources */,
 				E6A1DCC81C027D910034443B /* CoreDataHelper.swift in Sources */,
 				E6A1DCDD1C0768AF0034443B /* VenueListViewController.swift in Sources */,
 				E6A1DCDA1C065A5F0034443B /* CacheHelper.swift in Sources */,
+				E674591E1C179F5B00DEAA24 /* AutocompleteResultsExtension.swift in Sources */,
+				E67459171C178C6400DEAA24 /* ViewConstants.swift in Sources */,
 				E694A2D71BFD4D4400D18BED /* CoreDataStackManager.swift in Sources */,
 				E694A2D91BFD4DD400D18BED /* NetworkRequestHelper.swift in Sources */,
 				E6A1DCC61C027C720034443B /* cuadratic.xcdatamodeld in Sources */,
