@@ -13,8 +13,8 @@ class Venue: NSManagedObject {
     
     @NSManaged var id: String
     @NSManaged var name: String
+    @NSManaged var verified: Bool
 
-    
     // Relationship Data
     @NSManaged var favorite: User?
     @NSManaged var location: Location?
@@ -32,6 +32,12 @@ class Venue: NSManagedObject {
         
         id = (dictionary["id"] as? String)!
         name = (dictionary["name"] as? String)!
+        
+        if let verifiedValue = dictionary["verified"] as? Bool {
+            verified = verifiedValue
+        } else {
+            verified = false
+        }
     }
     
     var hasPhotos: Bool {

@@ -38,6 +38,7 @@
     <entity name="Venue" representedClassName=".Venue" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verified" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="venue" inverseEntity="Category" syncable="YES"/>
         <relationship name="favorite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favorites" inverseEntity="User" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="venue" inverseEntity="Location" syncable="YES"/>
@@ -45,11 +46,11 @@
         <relationship name="stats" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Stats" inverseName="venue" inverseEntity="Stats" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="Venue" positionX="-54" positionY="27" width="128" height="150"/>
-        <element name="Photo" positionX="-45" positionY="36" width="128" height="120"/>
-        <element name="Location" positionX="-36" positionY="72" width="128" height="165"/>
-        <element name="Stats" positionX="-18" positionY="108" width="128" height="165"/>
         <element name="Category" positionX="0" positionY="135" width="128" height="75"/>
+        <element name="Location" positionX="-36" positionY="72" width="128" height="165"/>
+        <element name="Photo" positionX="-45" positionY="36" width="128" height="120"/>
+        <element name="Stats" positionX="-18" positionY="108" width="128" height="165"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Venue" positionX="-54" positionY="27" width="128" height="165"/>
     </elements>
 </model>

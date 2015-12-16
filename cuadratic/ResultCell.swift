@@ -16,7 +16,9 @@ class ResultCell: UITableViewCell {
     @IBOutlet weak var thumbnail: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var entityType: UILabel!
-    @IBOutlet weak var location: UILabel!
+//    @IBOutlet weak var location: UILabel!
+    
+    @IBOutlet weak var verified: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var imageLoadingIndicator: UIActivityIndicatorView!
     

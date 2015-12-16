@@ -37,12 +37,10 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("favoriteCell") as! ResultCell
         cell.title.text = favorite.name
         
-        if let location = favorite.location {
-            cell.location.text = location.fullLocationString
-        }
         if let category = favorite.category {
-            cell.entityType.text = category.name
+            cell.entityType.text = "\(category.name) - \(favorite.location?.shortLocationString)"
         }
+        cell.verified.text = favorite.verified ? "Verified Venue" : "Unverified Venue"
 
         if let thumbnail = favorite.thumbnailImage {
             cell.thumbnail.image = thumbnail

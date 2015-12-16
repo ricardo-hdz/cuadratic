@@ -22,8 +22,8 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
         
         let cell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! ResultCell
         cell.title.text = venue.name
-        cell.location.text = venue.location!.fullLocationString
-        cell.entityType.text = venue.category!.name
+        cell.entityType.text = "\(venue.category!.name) - \(venue.location!.shortLocationString)"
+        cell.verified.text = venue.verified ? "Verified Venue" : "Unverified Venue"
         if venue.photos!.count > 0 {
             let thumbnail = venue.thumbnailImage
             cell.thumbnail.image = thumbnail
@@ -36,7 +36,7 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
         if let favoriteButton = cell.bookmark {
             if favoriteIds.contains(venue.id) {
                 venue.favorite = UserHelper.getInstance().getTempUser()
-                cell.bookmark.setImage(UIImage(named: "bookmark_filled"), forState: UIControlState.Normal)
+                favoriteButton.setImage(UIImage(named: "bookmark_filled"), forState: UIControlState.Normal)
                 
 
                 /*dispatch_async(dispatch_get_main_queue(), {
@@ -48,7 +48,7 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
                 })*/
                 
             } else {
-                cell.bookmark.setImage(UIImage(named: "bookmark_empty"), forState: UIControlState.Normal)
+                favoriteButton.setImage(UIImage(named: "bookmark_empty"), forState: UIControlState.Normal)
                 //self.reloadInputViews()
 
                 /*dispatch_async(dispatch_get_main_queue(), {

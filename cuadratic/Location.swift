@@ -61,5 +61,11 @@ class Location: NSManagedObject {
             return locationString
         }
     }
+    
+    var shortLocationString: String {
+        get {
+            return "\(city), \(state)"
+        }
+    }
 
 }
