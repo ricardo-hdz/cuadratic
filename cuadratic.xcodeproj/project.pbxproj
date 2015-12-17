@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0DB93E7EA84D0B39AAB1CA8E /* Pods_cuadratic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A6ED23D089F4B62BC400135 /* Pods_cuadratic.framework */; };
+		E6678B851C2226010096FCE0 /* MapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6678B841C2226010096FCE0 /* MapExtension.swift */; };
+		E6678B891C222F390096FCE0 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6678B881C222F390096FCE0 /* LocationHelper.swift */; };
 		E67459171C178C6400DEAA24 /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67459161C178C6400DEAA24 /* ViewConstants.swift */; };
 		E674591C1C17924E00DEAA24 /* SearchBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674591B1C17924E00DEAA24 /* SearchBarExtension.swift */; };
 		E674591E1C179F5B00DEAA24 /* AutocompleteResultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674591D1C179F5B00DEAA24 /* AutocompleteResultsExtension.swift */; };
@@ -117,6 +119,8 @@
 /* Begin PBXFileReference section */
 		9A6ED23D089F4B62BC400135 /* Pods_cuadratic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cuadratic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACC51E3282EF18F051DE2409 /* Pods-cuadratic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cuadratic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-cuadratic/Pods-cuadratic.debug.xcconfig"; sourceTree = "<group>"; };
+		E6678B841C2226010096FCE0 /* MapExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapExtension.swift; sourceTree = "<group>"; };
+		E6678B881C222F390096FCE0 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		E67459161C178C6400DEAA24 /* ViewConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
 		E674591B1C17924E00DEAA24 /* SearchBarExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarExtension.swift; sourceTree = "<group>"; };
 		E674591D1C179F5B00DEAA24 /* AutocompleteResultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutocompleteResultsExtension.swift; sourceTree = "<group>"; };
@@ -221,6 +225,7 @@
 				E674591B1C17924E00DEAA24 /* SearchBarExtension.swift */,
 				E674591D1C179F5B00DEAA24 /* AutocompleteResultsExtension.swift */,
 				E674591F1C17A04400DEAA24 /* LocationManagerExtension.swift */,
+				E6678B841C2226010096FCE0 /* MapExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 				E6A1DCE81C0A6F0B0034443B /* StatsHelper.swift */,
 				E6B79D941C0F57B900F61EDD /* BaseHelper.swift */,
 				E6B79D961C0F812F00F61EDD /* UserHelper.swift */,
+				E6678B881C222F390096FCE0 /* LocationHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -611,7 +617,9 @@
 				E6B79D951C0F57B900F61EDD /* BaseHelper.swift in Sources */,
 				E6A1DCBF1C0271050034443B /* SearchViewController.swift in Sources */,
 				E694A2A61BFD1F8800D18BED /* AppDelegate.swift in Sources */,
+				E6678B851C2226010096FCE0 /* MapExtension.swift in Sources */,
 				E6A1DCEC1C0AAD620034443B /* Color.swift in Sources */,
+				E6678B891C222F390096FCE0 /* LocationHelper.swift in Sources */,
 				E6A1DD191C0B84E70034443B /* AgeBreakdownViewController.swift in Sources */,
 				E694A2DD1BFD4E1000D18BED /* NetworkUtilities.swift in Sources */,
 				E6B79D9E1C138A9900F61EDD /* StatsFormats.swift in Sources */,

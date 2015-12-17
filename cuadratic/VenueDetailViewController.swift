@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FontAwesome_swift
+import MapKit
 
 class VenueDetailViewController: UIViewController, UINavigationControllerDelegate {
     var venue: Venue!
@@ -37,13 +38,21 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     @IBOutlet weak var ageBreakdownLabel: UILabel!
     @IBOutlet weak var hourBreakdownLabel: UILabel!
     
+    @IBOutlet weak var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
-        getVenueStats()
-        setVenueHeader()
+        mapView.delegate = self
+        venueThumbnail.clipsToBounds = true
         
+        setVenueHeader()
+        loadThumbnailForVenue()
+        setIcons()
+        getVenueStats()
+        searchVenueLocation()
+    }
+    
+    func setIcons() {
         totalCheckinsIcon.font = UIFont.fontAwesomeOfSize(14.0)
         totalCheckinsIcon.text = String.fontAwesomeIconWithCode("fa-check-circle-o")
         
@@ -58,7 +67,6 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         
         maleIcon.font = UIFont.fontAwesomeOfSize(14.0)
         maleIcon.text = String.fontAwesomeIconWithCode("fa-male")
-        
     }
     
     @IBAction func viewAgeBreakdown(sender: AnyObject) {
@@ -73,17 +81,28 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
-    func setNavigationBar() {
-        let navBar = self.navigationController?.navigationBar
-        navBar?.barTintColor = UIColor.grayColor()
-        navBar?.tintColor = UIColor.whiteColor()
+    func loadThumbnailForVenue() {
+        if (venue.hasPhotos) {
+            let url = venue.getThumbnailUrl(Photo.size.medium)
+            print("URL: \(url)")
+            if url != nil {
+                PhotoHelper.getImage(url!) { image, error in
+                    if let error = error {
+                        // TODO
+                        print("Unable to get image for URL: \(url). Error: \(error)")
+                    } else {
+                        print("Request completed")
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.venueThumbnail.image = image!
+                        })
+                    }
+                }
+            }
+        }
     }
+
     
     func setVenueHeader() {
-        venueThumbnail.image = venue.thumbnailImage!
-        venueThumbnail.layer.cornerRadius = venueThumbnail.frame.size.width / 2
-        venueThumbnail.clipsToBounds = true
-        
         venueTitle.text = venue.name
     }
     

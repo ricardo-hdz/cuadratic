@@ -114,7 +114,7 @@ class SearchViewController:
                     dispatch_async(dispatch_get_main_queue(), {
                         self.searchIndicator.stopAnimating()
                         self.resultsTable.hidden = true
-                        self.searchPlacesLabel.text = "No results found for \(query)"
+                        self.searchPlacesLabel.text = "No results found for \(query!)"
                         self.searchPlacesLabel.hidden = false
                     })
                     

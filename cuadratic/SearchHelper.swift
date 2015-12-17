@@ -29,7 +29,7 @@ class SearchHelper {
                     }
                     
                 } else {
-                    callback(results: nil, error: "No results found for \(params["query"])")
+                    callback(results: nil, error: "No results found for \(params["query"]!)")
                 }
             }
         }

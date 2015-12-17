@@ -89,6 +89,14 @@ class Venue: NSManagedObject {
         }
     }
     
+    func getThumbnailUrl(size: String) -> String? {
+        if (hasPhotos) {
+            let photo = photos!.objectAtIndex(0) as! Photo
+            return photo.getUrl(size)
+        }
+        return nil
+    }
+    
     var thumbnailPhoto: Photo? {
         get {
             if (hasPhotos) {
