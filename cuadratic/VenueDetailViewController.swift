@@ -106,7 +106,7 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     
     func getVenueStats() {
         StatsHelper.getVenueStats(venue.id) {stats, error in
-            if let error = error {
+            if let _ = error {
                 BaseHelper.sendNotification(self, body: "Stats for this venue are currently unavailable. Please try later.")
             } else {
                 if let stats = stats {
