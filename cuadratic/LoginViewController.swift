@@ -53,11 +53,9 @@ class LoginViewController: UIViewController {
     func requestAccessTokenWithCode(code: String) {
         LoginHelper.getFoursquareAccessToken(code) { token, error in
             if let error = error {
-                // display error in UI
                 self.errorLabel.hidden = false
                 self.errorLabel.text = error
             } else {
-                // save token in session and segue
                 self.setSessionToken(token!)
                 self.indicator.stopAnimating()
                 self.displayLandController()
@@ -67,7 +65,7 @@ class LoginViewController: UIViewController {
     
     func displayLandController() {
         let controller = self.storyboard?.instantiateViewControllerWithIdentifier("landingTabBarController") as! UITabBarController
-        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.presentViewController(controller, animated: true, completion: nil)
     }
     
     func setSessionToken(token: String) {

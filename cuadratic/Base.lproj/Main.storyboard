@@ -25,6 +25,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ic7-qb-tC3">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G9a-MB-bip" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController navigationBarHidden="YES" id="lyL-1p-N0q" sceneMemberID="viewController">
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MX5-mA-0tB">
@@ -35,7 +36,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HJP-eJ-qSb"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G9a-MB-bip" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-636" y="344"/>
         </scene>
@@ -58,7 +58,7 @@
                                     <constraint firstAttribute="width" constant="101" id="qLg-aj-BNy"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="100"/>
-                                <color key="textColor" red="0.035294117647058823" green="0.75686274509803919" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.10196078431372549" green="0.73725490196078436" blue="0.61176470588235299" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbU-zk-tvo">
@@ -94,6 +94,15 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lIO-af-sx3">
                                 <rect key="frame" x="290" y="430" width="20" height="20"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuadratic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2y-DT-2jF">
+                                <rect key="frame" x="254" y="249" width="94" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="McW-Pi-Vpm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.1019607843" green="0.73725490199999999" blue="0.61176470589999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -101,6 +110,8 @@
                             <constraint firstItem="2tc-KK-5m3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="124" id="2fT-qa-l8G"/>
                             <constraint firstItem="lIO-af-sx3" firstAttribute="centerX" secondItem="PzV-sx-Zij" secondAttribute="centerX" id="493-7O-Tfv"/>
                             <constraint firstItem="DbU-zk-tvo" firstAttribute="top" secondItem="2tc-KK-5m3" secondAttribute="bottom" constant="53" id="AFf-yC-adQ"/>
+                            <constraint firstItem="O2y-DT-2jF" firstAttribute="centerX" secondItem="2tc-KK-5m3" secondAttribute="centerX" id="Ffc-jg-mHo"/>
+                            <constraint firstItem="O2y-DT-2jF" firstAttribute="top" secondItem="2tc-KK-5m3" secondAttribute="bottom" constant="4" id="KIZ-0Z-AaB"/>
                             <constraint firstItem="DbU-zk-tvo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PwR-ke-Wz1"/>
                             <constraint firstItem="k4C-vo-LXl" firstAttribute="top" secondItem="PzV-sx-Zij" secondAttribute="bottom" constant="15" id="Q6D-A8-mqG"/>
                             <constraint firstItem="lIO-af-sx3" firstAttribute="centerX" secondItem="631-yM-dIe" secondAttribute="centerX" id="WmM-UZ-2TU"/>
