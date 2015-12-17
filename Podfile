@@ -5,6 +5,7 @@ use_frameworks!
 target 'cuadratic' do
 pod 'FontAwesome.swift'
 pod 'GoogleMaps'
+pod 'Charts'
 end
 
 target 'cuadraticTests' do
