@@ -37,23 +37,8 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
             if favoriteIds.contains(venue.id) {
                 venue.favorite = UserHelper.getInstance().getTempUser()
                 favoriteButton.setImage(UIImage(named: "bookmark_filled"), forState: UIControlState.Normal)
-                
-
-                /*dispatch_async(dispatch_get_main_queue(), {
-                    print("Is favorite: \(venue.name)")
-                    favoriteButton.setImage(UIImage(named: "bookkmark_filled"), forState: UIControlState.Normal)
-                    
-                    
-                    self.reloadInputViews()
-                })*/
-                
             } else {
                 favoriteButton.setImage(UIImage(named: "bookmark_empty"), forState: UIControlState.Normal)
-                //self.reloadInputViews()
-
-                /*dispatch_async(dispatch_get_main_queue(), {
-                    favoriteButton.setImage(UIImage(named: "boorkmark_empty"), forState: UIControlState.Normal)
-                })*/
             }
         }
         
@@ -86,7 +71,6 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
             ]
             SearchHelper.getVenuePhotos(venue.id, params: params) { photos, error in
                 if let error = error {
-                    // TODO ignore and display placelholder
                     print("Error getVenuePhotos: \(error)")
                 } else {
                     self.venues[index.row].photos = NSOrderedSet(array: photos!)
@@ -104,7 +88,6 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
             if !url!.isEmpty {
                 PhotoHelper.getImage(url!) { image, error in
                     if let error = error {
-                        // TODO
                         print("Unable to get image for URL: \(url). Error: \(error)")
                     } else {
                         dispatch_async(dispatch_get_main_queue(), {

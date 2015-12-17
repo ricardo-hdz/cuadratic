@@ -103,9 +103,10 @@ class SearchViewController:
         
         SearchHelper.searchVenues(params) { venues, error in
             if let error = error {
-                // TODO: display error in UI
-                print(error)
+                self.resultsTable.hidden = true
+                self.searchPlacesLabel.text = error
                 self.searchIndicator.stopAnimating()
+                 self.searchPlacesLabel.hidden = false
             } else {
                 if (venues?.count > 0) {
                     self.venues = venues!

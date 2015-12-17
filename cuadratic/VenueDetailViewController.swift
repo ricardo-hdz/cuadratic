@@ -88,10 +88,8 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
             if url != nil {
                 PhotoHelper.getImage(url!) { image, error in
                     if let error = error {
-                        // TODO
                         print("Unable to get image for URL: \(url). Error: \(error)")
                     } else {
-                        print("Request completed")
                         dispatch_async(dispatch_get_main_queue(), {
                             self.venueThumbnail.image = image!
                         })
@@ -109,8 +107,7 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     func getVenueStats() {
         StatsHelper.getVenueStats(venue.id) {stats, error in
             if let error = error {
-                // TODO
-                print("Error while requesting stats: \(error)")
+                BaseHelper.sendNotification(self, body: "Stats for this venue are currently unavailable. Please try later.")
             } else {
                 if let stats = stats {
                     self.stats = stats

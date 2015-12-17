@@ -57,7 +57,7 @@ class HourBreakdownViewController: UIViewController {
         
         // DATASET
         let chartDataSet = BarChartDataSet(yVals: dataEntries, label: "Number of checkins by hour")
-        chartDataSet.colors = [UIColor(red: 113/255, green: 242/255, blue: 175/255, alpha: 1)]
+        chartDataSet.colors = [UIColor(red: 26/255, green: 188/255, blue: 156/255, alpha: 1)]
         // Hide values in data bars
         chartDataSet.drawValuesEnabled = false
         

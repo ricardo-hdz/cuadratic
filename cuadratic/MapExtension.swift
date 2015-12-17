@@ -12,9 +12,8 @@ import MapKit
 extension VenueDetailViewController: MKMapViewDelegate {    
     func searchVenueLocation() {
         LocationHelper.searchGeocodeByString((venue.location?.fullLocationString)!) { placemark, error in
-            if let error = error {
-                //TODO
-                print("Error while localizing map: \(error.localizedLowercaseString)")
+            if let _ = error {
+                BaseHelper.sendNotification(self, body: "Unable to locate venue in map. Please try again later.")
             } else {
                 self.setPlacemarkInMap(placemark!)
                 dispatch_async(dispatch_get_main_queue(), {
