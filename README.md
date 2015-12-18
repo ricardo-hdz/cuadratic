@@ -28,6 +28,15 @@ Run it!
 **Important** Xcode project should be opened using cuadratic.xcworkspace in order to pick up the CocoaPod dependencies correctly.
 
 ####Notes
+#####Stub Data
+As this app is intended for Foursquare's venue users/managers, some of the  data to run/debug it is stub data as venue analytics and other information is only available to authorized venue managers.
+
+If you are an authorized venue manager, you can switch on/off stub data in the AppDelegate file:
+
+`var simulate: Bool = true`
+
+To enable stub data, set the variable to true. To disable, set it to false.
+
 #####Location Services
 This app uses location services to automatically detect location and use it to perform venue searches. While debugging, you can set a custom location to simulate user's location. To do that, follow these steps:
 
