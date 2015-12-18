@@ -1,13 +1,13 @@
-#Cuadratica
+#Cuadratic
 
-Cuadratica is an iOS app for Foursquare venue managers to search, bookmark and manage venues and view venue analytics.
+Cuadratic is an iOS app for Foursquare venue managers to search, bookmark and manage venues and view venue analytics.
 
 The app uses [Foursquare API](https://developer.foursquare.com/) to search for venues given a keyword and/or location and to display managed venues based on the entitlements of the logged in user.
 
 Venue statistics provide total checkins, social media impact, demographics and user and hour breakdowns.
 
 ####Dependencies
-Cuadratica uses the following dependencies:
+Cuadratic uses the following dependencies:
 
 - [Google Places API](https://developers.google.com/places/ios-api/start): to provide autocomplete suggestions for places and location in search.
 - [Font Awesome](https://github.com/thii/FontAwesome.swift): to display icons in the app.
