@@ -45,3 +45,9 @@ This app uses location services to automatically detect location and use it to p
 - Select Run/Debug in the left column options
 - Select on Options menu
 - Check "Allow Location Simulation" as set a Default Location from the dropdown
+
+####Screenshots
+<img src="https://github.com/ricardo-hdz/cuadratic/blob/master/readme_files/1.png" width="200">
+<img src="https://github.com/ricardo-hdz/cuadratic/blob/master/readme_files/2.png" width="200">
+<img src="https://github.com/ricardo-hdz/cuadratic/blob/master/readme_files/3.png" width="200">
+<img src="https://github.com/ricardo-hdz/cuadratic/blob/master/readme_files/4.png" width="200">
