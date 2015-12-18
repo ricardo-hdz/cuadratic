@@ -16,16 +16,17 @@ Cuadratic uses the following dependencies:
 ####Installation and usage
 The app uses CocoaPods to install some of the dependencies, you need to have CocoaPods installed before running the app.
 
-If you need to install, follow instructions [here](https://guides.cocoapods.org/using/getting-started.html)
+If you need to install CocoaPods, follow instructions [here](https://guides.cocoapods.org/using/getting-started.html)
 
 ```
 git clone https://github.com/ricardo-hdz/cuadratic.git
 pod install
 Open project: cuadratic.xcworkspace
 ```
-Run it!
+Run it and sign it using your Foursquare credentials.
 
-**Important** Xcode project should be opened using cuadratic.xcworkspace in order to pick up the CocoaPod dependencies correctly.
+**Important**
+Xcode project should be opened using cuadratic.xcworkspace in order to pick up the CocoaPod dependencies correctly.
 
 ####Notes
 #####Stub Data
