@@ -84,7 +84,6 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     func loadThumbnailForVenue() {
         if (venue.hasPhotos) {
             let url = venue.getThumbnailUrl(Photo.size.medium)
-            print("URL: \(url)")
             if url != nil {
                 PhotoHelper.getImage(url!) { image, error in
                     if let error = error {

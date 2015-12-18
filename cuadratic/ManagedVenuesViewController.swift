@@ -39,8 +39,7 @@ class ManagedVenuesViewController: VenueListViewController {
     
     func getManagedVenues() {
         SearchHelper.getManagedVenues() { venues, error in
-            if let error = error {
-                print("Error while requesting managed venues: \(error)")
+            if let _ = error {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.searchIndicator.stopAnimating()
                     self.managedTable.hidden = true

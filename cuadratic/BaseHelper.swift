@@ -38,13 +38,5 @@ class BaseHelper {
             body, preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
         controller.presentViewController(alertController, animated: true, completion: nil)
-        
-        /*
-        let notification = UILocalNotification()
-        notification.fireDate = NSDate(timeIntervalSinceNow: 1)
-        notification.alertBody = body
-        notification.alertAction = "Action"
-UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        print("Notifiction sent")*/
     }
 }

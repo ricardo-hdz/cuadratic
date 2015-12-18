@@ -38,7 +38,6 @@ extension NetworkRequestHelper {
             let parsedData: AnyObject? = try NSJSONSerialization.JSONObjectWithData(postProcessedResponse, options: .AllowFragments)
             callback(result: parsedData, error: nil)
         } catch let error as NSError {
-            print("Error while parsing service response: " + error.localizedDescription)
             callback(result: nil, error: error)
         }
     }

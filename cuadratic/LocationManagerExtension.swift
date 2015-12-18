@@ -12,10 +12,7 @@ import CoreLocation
 extension SearchViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count > 0 {
-            print("Location manager has locations")
             self.location = locations[0].coordinate
-        } else {
-            print("Location manager does not have locations")
         }
     }
     

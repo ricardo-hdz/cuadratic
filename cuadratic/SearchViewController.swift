@@ -65,9 +65,7 @@ class SearchViewController:
     
     func getLocationForQuery() -> [String:AnyObject]? {
         let customLocation = searchLocationController?.searchBar.text
-            print("Custom location: \(customLocation!)")
         if (customLocation != "Near Me" && !customLocation!.isEmpty) {
-
             return [
                 "near": customLocation!
             ]

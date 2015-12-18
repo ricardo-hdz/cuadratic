@@ -53,7 +53,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (url.scheme == "cuadratic") {
             let params = url.query?.characters.split("=").map(String.init)
             let code = params![1]
-            print("Code: \(code)")
 
             NSNotificationCenter.defaultCenter().postNotificationName("foursquareCode", object: code)
             return true

@@ -39,7 +39,6 @@ class ResultCell: UITableViewCell {
             let locationContext = Location(dictionary: locationData, context: sharedContext)
             
             let categoryData = BaseHelper.getDictionaryForManagedObject(venue.category!)
-            print("Category data: \(categoryData)")
             let category = Category(dictionary: [categoryData], context: sharedContext)
             
             venueContext.location = locationContext

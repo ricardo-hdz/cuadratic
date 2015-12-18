@@ -57,7 +57,7 @@ extension SearchViewController: GMSAutocompleteResultsViewControllerDelegate, UI
     }
     
     func resultsController(resultsController: GMSAutocompleteResultsViewController!, didFailAutocompleteWithError error: NSError!) {
-        print("Error: \(error.localizedDescription)")
+        print("Error while autocompleting: \(error.localizedDescription)")
     }
     
     func willPresentSearchController(searchController: UISearchController) {
