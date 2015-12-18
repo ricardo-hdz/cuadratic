@@ -25,4 +25,14 @@ Open project: cuadratic.xcworkspace
 ```
 Run it!
 
-**Important** Xcode project should be open using cuadratic.xcworkspace in order to pick up the CocoaPod dependencies correctly.
+**Important** Xcode project should be opened using cuadratic.xcworkspace in order to pick up the CocoaPod dependencies correctly.
+
+####Notes
+#####Location Services
+This app uses location services to automatically detect location and use it to perform venue searches. While debugging, you can set a custom location to simulate user's location. To do that, follow these steps:
+
+- Go to Product menu > Scheme
+- Select Edit Scheme
+- Select Run/Debug in the left column options
+- Select on Options menu
+- Check "Allow Location Simulation" as set a Default Location from the dropdown
