@@ -64,8 +64,10 @@ class LoginViewController: UIViewController {
     }
     
     func displayLandController() {
-        let controller = self.storyboard?.instantiateViewControllerWithIdentifier("landingTabBarController") as! UITabBarController
-        self.navigationController?.presentViewController(controller, animated: true, completion: nil)
+        dispatch_async(dispatch_get_main_queue(), {
+            let controller = self.storyboard?.instantiateViewControllerWithIdentifier("landingTabBarController") as! UITabBarController
+            self.navigationController?.showViewController(controller, sender: nil)
+        })
     }
     
     func setSessionToken(token: String) {

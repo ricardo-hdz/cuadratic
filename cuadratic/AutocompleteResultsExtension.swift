@@ -52,8 +52,8 @@ extension SearchViewController: GMSAutocompleteResultsViewControllerDelegate, UI
 
     func resultsController(resultsController: GMSAutocompleteResultsViewController!, didAutocompleteWithPlace place: GMSPlace!) {
         activeSearchController?.searchBar.text = place.name
-        updateSearchControllers()
         searchVenues()
+        updateSearchControllers()
     }
     
     func resultsController(resultsController: GMSAutocompleteResultsViewController!, didFailAutocompleteWithError error: NSError!) {

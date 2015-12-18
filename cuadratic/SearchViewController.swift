@@ -19,7 +19,7 @@ class SearchViewController:
     @IBOutlet weak var searchPlacesLabel: UILabel!
     @IBOutlet weak var searchIndicator: UIActivityIndicatorView!
     
-    let locationManager = CLLocationManager()
+    var locationManager: CLLocationManager = CLLocationManager()
     var location: CLLocationCoordinate2D?
     
     var resultsVenueViewController: GMSAutocompleteResultsViewController?
@@ -39,45 +39,53 @@ class SearchViewController:
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.delegate = self
+        
+        if !isLocationServicesDenied() {
+            if !isLocationServicesEnabled() {
+                locationManager.requestWhenInUseAuthorization()
+                locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+                locationManager.distanceFilter = kCLDistanceFilterNone
+            }
+        }
+        
         resultsTable.delegate = self
         resultsTable.dataSource = self
         
         setupAutocompleteController()
-        
-        //searchVenues()
         
         resultsTableDefaultConstraint = NSLayoutConstraint(item: self.resultsTable, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: CGFloat(ViewConstants.searchBarHeight * 2 - ViewConstants.tableSectionHeight))
         
         resultsTableUpConstraint = NSLayoutConstraint(item: self.resultsTable, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: CGFloat(ViewConstants.searchBarHeight * 1 - ViewConstants.tableSectionHeight))
     }
     
-    override func viewWillAppear(animated: Bool) {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyKilometer
-        locationManager.requestLocation()
-    }
-    
     override func getVenuesTable() -> UITableView {
         return self.resultsTable
     }
     
-    func getLocationForQuery() -> [String:AnyObject] {
+    func getLocationForQuery() -> [String:AnyObject]? {
         let customLocation = searchLocationController?.searchBar.text
+            print("Custom location: \(customLocation!)")
         if (customLocation != "Near Me" && !customLocation!.isEmpty) {
+
             return [
                 "near": customLocation!
             ]
         } else {
             if (location == nil) {
-                print("location nil")
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.locationManager.requestLocation()
-                })
+                // Check if location services is enabled
+                if isLocationServicesDenied() {
+                    BaseHelper.sendNotification(self, body: "Current location can not be determined as location services are not enabled on this device. Please enable them in Settings or specify a custom location.")
+                    return nil
+                } else {
+                    BaseHelper.sendNotification(self, body: "Oops! We can't determine your location at this time. Please specifiy a location in the location bar.")
+                }
+                return nil
+            } else {
+                return [
+                    "ll": "\(location!.latitude),\(location!.longitude)"
+                ]
             }
-            return [
-                "ll": "\(location!.latitude),\(location!.longitude)"
-            ]
         }
     }
     
@@ -99,26 +107,28 @@ class SearchViewController:
         searchIndicator.startAnimating()
         var params = getLocationForQuery()
         let query = searchVenueController?.searchBar.text
-        params["query"] = query
-        
-        SearchHelper.searchVenues(params) { venues, error in
-            if let error = error {
-                self.resultsTable.hidden = true
-                self.searchPlacesLabel.text = error
-                self.searchIndicator.stopAnimating()
-                 self.searchPlacesLabel.hidden = false
-            } else {
-                if (venues?.count > 0) {
-                    self.venues = venues!
-                    self.refreshVenues()
+        if params != nil {
+            params!["query"] = query
+            
+            SearchHelper.searchVenues(params!) { venues, error in
+                if let error = error {
+                    self.resultsTable.hidden = true
+                    self.searchPlacesLabel.text = error
+                    self.searchIndicator.stopAnimating()
+                    self.searchPlacesLabel.hidden = false
                 } else {
-                    dispatch_async(dispatch_get_main_queue(), {
-                        self.searchIndicator.stopAnimating()
-                        self.resultsTable.hidden = true
-                        self.searchPlacesLabel.text = "No results found for \(query!)"
-                        self.searchPlacesLabel.hidden = false
-                    })
-                    
+                    if (venues?.count > 0) {
+                        self.venues = venues!
+                        self.refreshVenues()
+                    } else {
+                        dispatch_async(dispatch_get_main_queue(), {
+                            self.searchIndicator.stopAnimating()
+                            self.resultsTable.hidden = true
+                            self.searchPlacesLabel.text = "No results found for \(query!)"
+                            self.searchPlacesLabel.hidden = false
+                        })
+                        
+                    }
                 }
             }
         }
@@ -137,8 +147,8 @@ class SearchViewController:
         searchLocationController?.active = false
         
         dispatch_async(dispatch_get_main_queue(), {
-            self.searchVenueController?.searchBar.text = venueText
-            self.searchLocationController?.searchBar.text = locationText
+            self.searchVenueController?.searchBar.text = venueText!
+            self.searchLocationController?.searchBar.text = locationText!
         })
     }
     

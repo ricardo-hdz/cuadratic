@@ -11,19 +11,29 @@ import CoreLocation
 
 extension SearchViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("location updated")
-        self.location = manager.location?.coordinate
+        if locations.count > 0 {
+            print("Location manager has locations")
+            self.location = locations[0].coordinate
+        } else {
+            print("Location manager does not have locations")
+        }
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Error while updating location: \(error.localizedDescription)")
+        BaseHelper.sendNotification(self, body: "Oops! We couldn't find your current location. Please specify a location for your searches ")
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if (status == CLAuthorizationStatus.AuthorizedWhenInUse) {
-            if (CLLocationManager.locationServicesEnabled()) {
-                locationManager.requestLocation()
-            }
+        if isLocationServicesEnabled() {
+            locationManager.requestLocation()
         }
+    }
+    
+    func isLocationServicesEnabled() -> Bool {
+        return CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse
+    }
+    
+    func isLocationServicesDenied() -> Bool {
+        return CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Denied || CLLocationManager.authorizationStatus() == CLAuthorizationStatus.Restricted
     }
 }
