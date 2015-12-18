@@ -63,14 +63,14 @@ class SearchViewController:
     }
     
     func getLocationForQuery() -> [String:AnyObject] {
-        var customLocation = searchLocationController?.searchBar.text
-        customLocation = "Seattle"
+        let customLocation = searchLocationController?.searchBar.text
         if (customLocation != "Near Me" && !customLocation!.isEmpty) {
             return [
                 "near": customLocation!
             ]
         } else {
             if (location == nil) {
+                print("location nil")
                 dispatch_async(dispatch_get_main_queue(), {
                     self.locationManager.requestLocation()
                 })

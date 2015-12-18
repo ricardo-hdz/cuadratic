@@ -11,6 +11,7 @@ import CoreLocation
 
 extension SearchViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("location updated")
         self.location = manager.location?.coordinate
     }
     
