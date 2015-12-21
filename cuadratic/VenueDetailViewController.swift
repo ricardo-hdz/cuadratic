@@ -14,9 +14,9 @@ import MapKit
 class VenueDetailViewController: UIViewController, UINavigationControllerDelegate {
     var venue: Venue!
     var stats: Stats!
+    var networkActive: Bool = false
     
     @IBOutlet weak var venueThumbnail: UIImageView!
-    
     @IBOutlet weak var venueTitle: UILabel!
   
     @IBOutlet weak var totalCheckins: UILabel!
@@ -85,11 +85,13 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         if (venue.hasPhotos) {
             let url = venue.getThumbnailUrl(Photo.size.medium)
             if url != nil {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
                 PhotoHelper.getImage(url!) { image, error in
                     if let error = error {
                         print("Unable to get image for URL: \(url). Error: \(error)")
                     } else {
                         dispatch_async(dispatch_get_main_queue(), {
+                            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                             self.venueThumbnail.image = image!
                         })
                     }
@@ -104,6 +106,7 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     }
     
     func getVenueStats() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         StatsHelper.getVenueStats(venue.id) {stats, error in
             if let _ = error {
                 BaseHelper.sendNotification(self, body: "Stats for this venue are currently unavailable. Please try later.")
@@ -112,6 +115,7 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
                     self.stats = stats
                     dispatch_async(dispatch_get_main_queue(), {
                         self.displayVenueStats(stats)
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     })
                 }
             }
