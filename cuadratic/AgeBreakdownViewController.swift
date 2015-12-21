@@ -25,5 +25,5 @@ class AgeBreakdownViewController: StatisticsViewController {
         
         setChart(months, values: dataToDisplay, barChartView: barChartView, xValues: months, statisticName: "age")
 
-    }    
+    }
 }
