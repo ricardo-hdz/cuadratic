@@ -74,7 +74,6 @@ class SearchViewController:
                 // Check if location services is enabled
                 if isLocationServicesDenied() {
                     BaseHelper.sendNotification(self, body: "Current location can not be determined as location services are not enabled on this device. Please enable them in Settings or specify a custom location.")
-                    return nil
                 } else {
                     BaseHelper.sendNotification(self, body: "Oops! We can't determine your location at this time. Please specifiy a location in the location bar.")
                 }
@@ -102,11 +101,11 @@ class SearchViewController:
     func searchVenues() {
         venues = [Venue]()
         favoriteIds = FavoritesHelper.getInstance().getFavoriteIds()
-        searchIndicator.startAnimating()
         var params = getLocationForQuery()
         let query = searchVenueController?.searchBar.text
         if params != nil {
             params!["query"] = query
+            searchIndicator.startAnimating()
             
             SearchHelper.searchVenues(params!) { venues, error in
                 if let error = error {
