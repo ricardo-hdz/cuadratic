@@ -18,6 +18,7 @@ class VenueListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
         let venue = venues[indexPath.row]
         
         let cell = tableView.dequeueReusableCellWithIdentifier("resultCell") as! ResultCell

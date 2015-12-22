@@ -15,7 +15,7 @@ extension SearchViewController: UISearchBarDelegate {
         }
         if (!searchBar.text!.isEmpty) {
             searchPlacesLabel.hidden = true
-            searchVenues()
+            self.searchVenues()
         }
         updateSearchControllers()
     }

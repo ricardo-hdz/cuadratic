@@ -30,6 +30,7 @@ class Location: NSManagedObject {
         let entity = NSEntityDescription.entityForName("Location", inManagedObjectContext: context)
         super.init(entity: entity!, insertIntoManagedObjectContext: context)
         
+        
         address = (dictionary["address"] as? String) ?? "NA"
         lat = (dictionary["lat"] as? Double) ?? 0.0
         lon = (dictionary["lng"] as? Double) ?? 0.0

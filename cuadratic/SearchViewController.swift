@@ -87,12 +87,13 @@ class SearchViewController:
     }
     
     func refreshVenues() {
-        dispatch_async(dispatch_get_main_queue(), {
+        //dispatch_async(dispatch_get_main_queue(), {
             self.searchIndicator.stopAnimating()
             self.view.addConstraint(self.resultsTableDefaultConstraint!)
             self.resultsTable.hidden = false
+
             self.resultsTable.reloadData()
-        })
+        //})
     }
     
     
@@ -114,9 +115,12 @@ class SearchViewController:
                     self.searchIndicator.stopAnimating()
                     self.searchPlacesLabel.hidden = false
                 } else {
+                    
                     if (venues?.count > 0) {
-                        self.venues = venues!
-                        self.refreshVenues()
+                        //dispatch_async(dispatch_get_main_queue(), {
+                            self.venues = venues!
+                            self.refreshVenues()
+                        //})
                     } else {
                         dispatch_async(dispatch_get_main_queue(), {
                             self.searchIndicator.stopAnimating()
@@ -124,7 +128,6 @@ class SearchViewController:
                             self.searchPlacesLabel.text = "No results found for \(query!)"
                             self.searchPlacesLabel.hidden = false
                         })
-                        
                     }
                 }
             }

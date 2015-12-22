@@ -20,26 +20,28 @@ class StatsHelper: NSObject {
             } else {
                 if let response = result!.valueForKey("response") as? [String: AnyObject] {
                     if let stats = response["stats"] as? [String:AnyObject] {
-                        let sharing = stats["sharing"] as? NSDictionary
-                        let twitterCheckins = sharing?.valueForKey("twitter")
-                        let facebookCheckins = sharing?.valueForKey("facebook")
-                        
-                        let genderBreakdown = stats["genderBreakdown"] as? NSDictionary
-                        let maleCheckins = genderBreakdown?.valueForKey("male")
-                        let femaleCheckins = genderBreakdown?.valueForKey("female")
-                        
-                        let dictionary: [String:AnyObject] = [
-                            "totalCheckins": stats["totalCheckins"]!,
-                            "twitterCheckins": twitterCheckins!,
-                            "facebookCheckins": facebookCheckins!,
-                            "maleCheckins": maleCheckins!,
-                            "femaleCheckins": femaleCheckins!,
-                            "ageBreakdown": stats["ageBreakdown"]!,
-                            "hourBreakdown": stats["hourBreakdown"]!
-                        ]
-                        
-                        let stats = Stats(dictionary: dictionary, context: CoreDataHelper.getInstance().temporaryContext)
-                        callback(stats: stats, error: nil)
+                        CoreDataHelper.getInstance().temporaryContext.performBlockAndWait({
+                            let sharing = stats["sharing"] as? NSDictionary
+                            let twitterCheckins = sharing?.valueForKey("twitter")
+                            let facebookCheckins = sharing?.valueForKey("facebook")
+                            
+                            let genderBreakdown = stats["genderBreakdown"] as? NSDictionary
+                            let maleCheckins = genderBreakdown?.valueForKey("male")
+                            let femaleCheckins = genderBreakdown?.valueForKey("female")
+                            
+                            let dictionary: [String:AnyObject] = [
+                                "totalCheckins": stats["totalCheckins"]!,
+                                "twitterCheckins": twitterCheckins!,
+                                "facebookCheckins": facebookCheckins!,
+                                "maleCheckins": maleCheckins!,
+                                "femaleCheckins": femaleCheckins!,
+                                "ageBreakdown": stats["ageBreakdown"]!,
+                                "hourBreakdown": stats["hourBreakdown"]!
+                            ]
+                            
+                            let stats = Stats(dictionary: dictionary, context: CoreDataHelper.getInstance().temporaryContext)
+                            callback(stats: stats, error: nil)
+                        })
                     } else {
                         callback(stats: nil, error: "Error while requesting stats for venue. No stats found in response")
                     }
