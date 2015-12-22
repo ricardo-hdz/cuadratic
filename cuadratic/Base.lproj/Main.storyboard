@@ -774,7 +774,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Popular times" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6VP-2y-tBU">
-                                        <rect key="frame" x="20" y="278" width="93" height="17"/>
+                                        <rect key="frame" x="20" y="276" width="93" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="132" id="Hg6-6t-4Uf"/>
                                         </constraints>
