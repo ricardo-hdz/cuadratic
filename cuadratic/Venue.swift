@@ -27,8 +27,10 @@ class Venue: NSManagedObject {
     }
 
     init(dictionary: [String: AnyObject], context: NSManagedObjectContext) {
+
         let entity = NSEntityDescription.entityForName("Venue", inManagedObjectContext: context)
         super.init(entity: entity!, insertIntoManagedObjectContext: context)
+        
         
         id = (dictionary["id"] as? String)!
         name = (dictionary["name"] as? String)!

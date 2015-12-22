@@ -18,6 +18,7 @@ class CoreDataHelper: NSObject {
         let sharedContext = CoreDataStackManager.sharedInstance().managedObjectContext
         let tempContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
         tempContext.persistentStoreCoordinator = sharedContext.persistentStoreCoordinator
+        //tempContext.parentContext = sharedContext
         return tempContext
     }()
     

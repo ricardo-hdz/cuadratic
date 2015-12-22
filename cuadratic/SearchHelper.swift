@@ -10,7 +10,6 @@ import Foundation
 import CoreData
 
 class SearchHelper {
-    
     class func searchVenues(params: [String:AnyObject], callback: (results: [Venue]?, error: String?) -> Void) {
         let requestHelper = NetworkRequestHelper.getInstance()
         let endpoint = NetworkRequestHelper.Constants.API.FSQ_ENDPOINT + NetworkRequestHelper.Constants.API.VENUES.SEARCH_VENUE
@@ -22,8 +21,10 @@ class SearchHelper {
             } else {
                 if let response = result!.valueForKey("response") as? [String: AnyObject] {
                     if let venues = response["venues"] as? [[String:AnyObject]] {
-                        let venueResults = SearchHelper.parseVenuesFromResponse(venues)
-                        callback(results: venueResults, error: nil)
+                        CoreDataHelper.getInstance().temporaryContext.performBlockAndWait({
+                            let venueResults = SearchHelper.parseVenuesFromResponse(venues)
+                            callback(results: venueResults, error: nil)
+                        })
                     } else {
                         callback(results: nil, error: "No venues found in response")
                     }
@@ -36,17 +37,16 @@ class SearchHelper {
     }
     
     class func parseVenuesFromResponse(venues: [[String:AnyObject]]) -> [Venue] {
+
         var venueResults = [Venue]()
         for var venueData in venues {
-            let temporaryContext = CoreDataHelper.getInstance().temporaryContext
-            let venue = Venue(dictionary: venueData, context: temporaryContext)
             let locationData = venueData["location"] as! [String: AnyObject]
-            let location = Location(dictionary: locationData, context: temporaryContext)
+            let location = Location(dictionary: locationData, context:  CoreDataHelper.getInstance().temporaryContext)
             let categoriesData = venueData["categories"] as! [[String: AnyObject]]
-            let category = Category(dictionary: categoriesData, context: temporaryContext)
+            let category = Category(dictionary: categoriesData, context:  CoreDataHelper.getInstance().temporaryContext)
+            let venue = Venue(dictionary: venueData, context:  CoreDataHelper.getInstance().temporaryContext)
             venue.category = category
             venue.location = location
-            
             venueResults.append(venue)
         }
         return venueResults
@@ -63,8 +63,10 @@ class SearchHelper {
                 if let response = result!.valueForKey("response") as? NSDictionary {
                     if let venues = response.valueForKey("venues") as? NSDictionary {
                         if let items = venues.valueForKey("items") as? [[String:AnyObject]] {
-                            let venueResults = SearchHelper.parseVenuesFromResponse(items)
-                            callback(venues: venueResults, error: nil)
+                            CoreDataHelper.getInstance().temporaryContext.performBlockAndWait({
+                                let venueResults = SearchHelper.parseVenuesFromResponse(items)
+                                callback(venues: venueResults, error: nil)
+                            })
                         } else {
                             callback(venues: nil, error: "No items in venues")
                         }
@@ -91,13 +93,14 @@ class SearchHelper {
                 if let response = result!.valueForKey("response") as? [String: AnyObject] {
                     if let photos = response["photos"] as? [String:AnyObject] {
                         if let items = photos["items"] as? [[String:AnyObject]] {
-                            let temporaryContext = CoreDataHelper.getInstance().temporaryContext
-                            var photoResults = [Photo]()
-                            for item in items {
-                                let photo = Photo(dictionary: item, context: temporaryContext)
-                                photoResults.append(photo)
-                            }
-                            callback(photos: photoResults, error: nil)
+                            CoreDataHelper.getInstance().temporaryContext.performBlockAndWait({
+                                var photoResults = [Photo]()
+                                for item in items {
+                                    let photo = Photo(dictionary: item, context: CoreDataHelper.getInstance().temporaryContext)
+                                    photoResults.append(photo)
+                                }
+                                callback(photos: photoResults, error: nil)
+                            })
                         } else {
                             callback(photos: nil, error: "No photos found for venue")
                         }

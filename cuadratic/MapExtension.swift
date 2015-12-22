@@ -11,15 +11,14 @@ import MapKit
 
 extension VenueDetailViewController: MKMapViewDelegate {    
     func searchVenueLocation() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         LocationHelper.searchGeocodeByString((venue.location?.fullLocationString)!) { placemark, error in
             if let _ = error {
                 BaseHelper.sendNotification(self, body: "Unable to locate venue in map. Please try again later.")
             } else {
                 self.setPlacemarkInMap(placemark!)
                 dispatch_async(dispatch_get_main_queue(), {
-                    // display controls
-                    //self.activityIndicator.stopAnimating()
-                    //self.displayControlsMap()
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 })
             }
         }

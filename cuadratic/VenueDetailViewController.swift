@@ -14,9 +14,11 @@ import MapKit
 class VenueDetailViewController: UIViewController, UINavigationControllerDelegate {
     var venue: Venue!
     var stats: Stats!
+    var networkActive: Bool = false
+    let ageBreakdownText = "People between {age}"
+    let hourBreakdownText = "{hour} is the hour with most traffic at this venue"
     
     @IBOutlet weak var venueThumbnail: UIImageView!
-    
     @IBOutlet weak var venueTitle: UILabel!
   
     @IBOutlet weak var totalCheckins: UILabel!
@@ -46,10 +48,19 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         venueThumbnail.clipsToBounds = true
         
         setVenueHeader()
-        loadThumbnailForVenue()
         setIcons()
-        getVenueStats()
-        searchVenueLocation()
+        
+        if ReachabilityHelper.isConnectedToNetwork() {
+            loadThumbnailForVenue()
+            getVenueStats()
+            viewAgeBreakdown.enabled = true
+            viewHourBreakdown.enabled = true
+            searchVenueLocation()
+        } else {
+            viewAgeBreakdown.enabled = false
+            viewHourBreakdown.enabled = false
+            BaseHelper.sendNotification(self, body: "Oops, no data connection detected. Please verify you are connected to the Internet.")
+        }
     }
     
     func setIcons() {
@@ -85,11 +96,13 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         if (venue.hasPhotos) {
             let url = venue.getThumbnailUrl(Photo.size.medium)
             if url != nil {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = true
                 PhotoHelper.getImage(url!) { image, error in
                     if let error = error {
                         print("Unable to get image for URL: \(url). Error: \(error)")
                     } else {
                         dispatch_async(dispatch_get_main_queue(), {
+                            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                             self.venueThumbnail.image = image!
                         })
                     }
@@ -104,6 +117,7 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
     }
     
     func getVenueStats() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         StatsHelper.getVenueStats(venue.id) {stats, error in
             if let _ = error {
                 BaseHelper.sendNotification(self, body: "Stats for this venue are currently unavailable. Please try later.")
@@ -112,6 +126,7 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
                     self.stats = stats
                     dispatch_async(dispatch_get_main_queue(), {
                         self.displayVenueStats(stats)
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     })
                 }
             }
@@ -126,11 +141,11 @@ class VenueDetailViewController: UIViewController, UINavigationControllerDelegat
         maleCheckins.text = "\(stats.maleCheckins)"
         
         let primeSegment = stats.getMaxIdFromBreakdown(stats.ageBreakdown, fieldName: "age")
-        ageBreakdownLabel.text = ageBreakdownLabel.text!.stringByReplacingOccurrencesOfString("{age}", withString: primeSegment)
+        ageBreakdownLabel.text = ageBreakdownText.stringByReplacingOccurrencesOfString("{age}", withString: primeSegment)
         
         let primeHour = stats.getMaxIdFromBreakdown(stats.hourBreakdown, fieldName: "hour")
         let formattedHour = stats.getFormattedHour(primeHour)
-        hourBreakdownLabel.text = hourBreakdownLabel.text!.stringByReplacingOccurrencesOfString("{hour}", withString: formattedHour)
+        hourBreakdownLabel.text = hourBreakdownText.stringByReplacingOccurrencesOfString("{hour}", withString: formattedHour)
     }
 
 }

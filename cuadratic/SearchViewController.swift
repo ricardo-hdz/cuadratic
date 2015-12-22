@@ -74,7 +74,6 @@ class SearchViewController:
                 // Check if location services is enabled
                 if isLocationServicesDenied() {
                     BaseHelper.sendNotification(self, body: "Current location can not be determined as location services are not enabled on this device. Please enable them in Settings or specify a custom location.")
-                    return nil
                 } else {
                     BaseHelper.sendNotification(self, body: "Oops! We can't determine your location at this time. Please specifiy a location in the location bar.")
                 }
@@ -88,12 +87,11 @@ class SearchViewController:
     }
     
     func refreshVenues() {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.searchIndicator.stopAnimating()
-            self.view.addConstraint(self.resultsTableDefaultConstraint!)
-            self.resultsTable.hidden = false
-            self.resultsTable.reloadData()
-        })
+        self.searchIndicator.stopAnimating()
+        self.view.addConstraint(self.resultsTableDefaultConstraint!)
+        self.resultsTable.hidden = false
+
+        self.resultsTable.reloadData()
     }
     
     
@@ -102,11 +100,11 @@ class SearchViewController:
     func searchVenues() {
         venues = [Venue]()
         favoriteIds = FavoritesHelper.getInstance().getFavoriteIds()
-        searchIndicator.startAnimating()
         var params = getLocationForQuery()
         let query = searchVenueController?.searchBar.text
         if params != nil {
             params!["query"] = query
+            searchIndicator.startAnimating()
             
             SearchHelper.searchVenues(params!) { venues, error in
                 if let error = error {
@@ -115,17 +113,15 @@ class SearchViewController:
                     self.searchIndicator.stopAnimating()
                     self.searchPlacesLabel.hidden = false
                 } else {
+                    
                     if (venues?.count > 0) {
                         self.venues = venues!
                         self.refreshVenues()
                     } else {
-                        dispatch_async(dispatch_get_main_queue(), {
-                            self.searchIndicator.stopAnimating()
-                            self.resultsTable.hidden = true
-                            self.searchPlacesLabel.text = "No results found for \(query!)"
-                            self.searchPlacesLabel.hidden = false
-                        })
-                        
+                        self.searchIndicator.stopAnimating()
+                        self.resultsTable.hidden = true
+                        self.searchPlacesLabel.text = "No results found for \(query!)"
+                        self.searchPlacesLabel.hidden = false
                     }
                 }
             }
